@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EricProject", "EricProject\EricProject.csproj", "{5FE26B29-3356-4D3C-A427-E135A0C2C048}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B803507A-4ED1-4132-BEA9-5CC3C2BD9A96} = {B803507A-4ED1-4132-BEA9-5CC3C2BD9A96}
+		{91DE4593-FC33-4DD4-B0C5-925226243E50} = {91DE4593-FC33-4DD4-B0C5-925226243E50}
+		{EFB69EA5-4579-4B31-AF20-2315BE301404} = {EFB69EA5-4579-4B31-AF20-2315BE301404}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BAL", "BAL\BAL.csproj", "{B803507A-4ED1-4132-BEA9-5CC3C2BD9A96}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{91DE4593-FC33-4DD4-B0C5-925226243E50}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessObject", "BusinessObject\BusinessObject.csproj", "{EFB69EA5-4579-4B31-AF20-2315BE301404}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 5
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://100.100.7.7:8080/tfs/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = BAL\\BAL.csproj
+		SccLocalPath1 = .
+		SccProjectFilePathRelativizedFromConnection1 = BAL\\
+		SccProjectUniqueName2 = BusinessObject\\BusinessObject.csproj
+		SccLocalPath2 = .
+		SccProjectFilePathRelativizedFromConnection2 = BusinessObject\\
+		SccProjectUniqueName3 = DAL\\DAL.csproj
+		SccLocalPath3 = .
+		SccProjectFilePathRelativizedFromConnection3 = DAL\\
+		SccProjectUniqueName4 = EricProject\\EricProject.csproj
+		SccLocalPath4 = .
+		SccProjectFilePathRelativizedFromConnection4 = EricProject\\
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5FE26B29-3356-4D3C-A427-E135A0C2C048}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FE26B29-3356-4D3C-A427-E135A0C2C048}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FE26B29-3356-4D3C-A427-E135A0C2C048}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FE26B29-3356-4D3C-A427-E135A0C2C048}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B803507A-4ED1-4132-BEA9-5CC3C2BD9A96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B803507A-4ED1-4132-BEA9-5CC3C2BD9A96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B803507A-4ED1-4132-BEA9-5CC3C2BD9A96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B803507A-4ED1-4132-BEA9-5CC3C2BD9A96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91DE4593-FC33-4DD4-B0C5-925226243E50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91DE4593-FC33-4DD4-B0C5-925226243E50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91DE4593-FC33-4DD4-B0C5-925226243E50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91DE4593-FC33-4DD4-B0C5-925226243E50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFB69EA5-4579-4B31-AF20-2315BE301404}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFB69EA5-4579-4B31-AF20-2315BE301404}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFB69EA5-4579-4B31-AF20-2315BE301404}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFB69EA5-4579-4B31-AF20-2315BE301404}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
