@@ -1,0 +1,88 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="CustomMaster.master.cs" Inherits="EricProject.CustomAdmin.CustomMaster" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+   <title>Referral Website</title>
+<link rel="stylesheet" href="<%=ConfigurationManager.AppSettings["pageURL"] %>includes/css/newstylesheet.css" type="text/css"/>
+<link rel="stylesheet" href="<%=ConfigurationManager.AppSettings["pageURL"] %>includes/css/fonts.css" type="text/css"/>
+<script src="<%=ConfigurationManager.AppSettings["pageURL"] %>includes/js/jquery.min.js" type="text/javascript"></script>
+
+<link href="<%=ConfigurationManager.AppSettings["pageURL"] %>includes/css/colorbox.css" rel="stylesheet" type="text/css" />
+<link href="<%=ConfigurationManager.AppSettings["pageURL"] %>includes/css/fonts.css" rel="stylesheet" type="text/css" />
+<script src="<%=ConfigurationManager.AppSettings["pageURL"] %>includes/js/jquery.colorbox.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+    var j = jQuery.noConflict();
+    j(document).ready(function () {
+        j(".popup1").colorbox({ width: "671px", height: "556px", background: "none", iframe: true });
+        j(".popup2").colorbox({ width: "671px", height: "556px", background: "none", iframe: true });
+        //Example of preserving a JavaScript event for inline calls.
+        j("#click").click(function () {
+            j('#click').css({ "background-color": "#000", "color": "#fff", "cursor": "inherit" }).text("Open this window again and this message will still be here.");
+            return false;
+        });
+    });
+</script>
+<script type="text/javascript" src="<%=ConfigurationManager.AppSettings["pageURL"] %>includes/js/ddaccordion.js"></script>
+<script type="text/javascript" src="<%=ConfigurationManager.AppSettings["pageURL"] %>includes/js/jquery-1.2.2.pack.js"></script>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <div id="headerCntr">
+      <!--  / logoHead box \ -->
+      <div class="logoHead"> <a class="logo" href="<%=ConfigurationManager.AppSettings["pageURL"] %>Home">CWMerchandise</a> </div>
+      <!--  \ logoHead box / -->
+      <!--  / menu box \ -->
+      <div class="menuBox" >
+        <div class="toprightBtn">
+			<div class="inner">
+				<ul>
+					<li><label>Credits:</label> <span class="nobg"><asp:Label ID="lblCreditsMerchant" runat="server" onclick="navigateToTD()" style="cursor: pointer;"></asp:Label></span></li>
+					<li class="last">
+						<a href="<%=ConfigurationManager.AppSettings["pageURL"] %>Site/Logout?str=1" >Logout</a>
+					<div class="toppopup" id="log_act" style="display:none;">
+							<div class="bottompart">
+								<div class="midpart">
+									<%--<ul>
+										<li><a href="<%=ConfigurationManager.AppSettings["pageURL"] %>Site/Merchant/Profile">Account</a></li>
+										<li><a href="#">Settings</a></li>
+                                        <li><a href="<%=ConfigurationManager.AppSettings["pageURL"] %>Site/Merchant/ChangePassword">Change Password</a></li>
+                                        <li><a href="<%=ConfigurationManager.AppSettings["pageURL"] %>Site/Merchant/MerchantReferral">Merchant Referral</a></li>
+										
+                                       <li class="last"><a href="<%=ConfigurationManager.AppSettings["pageURL"] %>Site/Logout?str=1">Logout</a></li>
+									</ul>--%>
+								</div>
+							</div>
+						</div>
+					</li>
+				</ul>
+        	</div>
+		</div>
+        <div class="menu">
+          <ul>
+            <li id="li_Home" runat="server"><a href="<%=ConfigurationManager.AppSettings["pageURL"] %>Site/Merchant/Dashboard">Home</a></li>
+                        <li id="li_HowItWorks" runat="server"><a href="<%=ConfigurationManager.AppSettings["pageURL"] %>Site/How-It-Works">How it Works</a></li>
+                        <li id="li_Features" runat="server"><a href="<%=ConfigurationManager.AppSettings["pageURL"] %>Site/Features">Features</a></li>
+                        <li id="li_SiteFAQ" runat="server"><a href="<%=ConfigurationManager.AppSettings["pageURL"] %>Site/FAQ">FAQ’s</a></li>
+                        <li id="li_Prices" runat="server"><a href="<%=ConfigurationManager.AppSettings["pageURL"] %>Site/Pricing">Pricing</a></li>
+                        <li id="li_Documentation" runat="server"><a href="<%=ConfigurationManager.AppSettings["pageURL"] %>Site/Merchant/Documentation">Documentation</a></li>
+
+          </ul>
+        </div>
+      </div>
+      <!--  \ menu box / -->
+    </div>
+    <!--  \ header container / -->
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+</body>
+</html>

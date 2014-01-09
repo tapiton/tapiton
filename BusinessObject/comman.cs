@@ -6,6 +6,7 @@ using System.Net.Mail;
 using System.Net;
 using System.Web;
 using System.Web.Configuration;
+using System.Configuration;
 namespace BusinessObject
 {
     public class comman
@@ -45,20 +46,21 @@ namespace BusinessObject
         {
             try
             {
-                var fromAddress = new MailAddress("socialreferral.testing@gmail.com", "Flexsin");
+                var fromAddress = new MailAddress("noreply@tapiton.com", "Tap It On");
                 var toAddress = new MailAddress(ToEmail);
-                const string fromPassword = "flexsin$$#7856";
+                const string UserName = "AKIAIJ6GPJKNYKXVBJLQ";
+                const string Password = "ApYjCYLyRR9LBFERugGZx/PCI25g8Z7GKmi30TZX2Saz";
                 string subject = subjectsend;
                 string body = messagesend;
 
                 var smtp = new SmtpClient
                 {
-                    Host = "smtp.gmail.com",
+                    Host = "email-smtp.us-east-1.amazonaws.com",
                     Port = 587,
                     EnableSsl = true,
                     DeliveryMethod = SmtpDeliveryMethod.Network,
                     UseDefaultCredentials = false,
-                    Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
+                    Credentials = new NetworkCredential(UserName, Password)
                 };
                 using (var message = new MailMessage(fromAddress, toAddress)
                 {
@@ -66,6 +68,7 @@ namespace BusinessObject
                     Body = body
                 })
                 {
+                    message.Bcc.Add("sentmail@tapiton.com");
                     message.IsBodyHtml = true;
                     smtp.Send(message);
                 }
@@ -74,13 +77,72 @@ namespace BusinessObject
             {
                 if (HttpContext.Current.Session["MerchantID"] != null)
                 {
-                     HttpContext.Current.Response.Redirect("http://socialreferral.onlineshoppingpool.com/Site/SMTP_ErrorHandling.aspx");
+                    HttpContext.Current.Response.Redirect(WebConfigurationManager.AppSettings["pageURL"].ToString() + "Site/SMTP_ErrorHandling.aspx");
                 }
                 else if (HttpContext.Current.Session["CustomerEmailId"] != null)
                 {
-                     HttpContext.Current.Response.Redirect("http://socialreferral.onlineshoppingpool.com/Site/SMTP_errorHandling_Customer.aspx");
+                    HttpContext.Current.Response.Redirect(WebConfigurationManager.AppSettings["pageURL"].ToString() + "Site/SMTP_errorHandling_Customer.aspx");
                 }
             }
+        }
+        public static void SendMailfrom(string sToEmail, string sFromEmail, string emailsubject, string emailcontent, string AttachmentPathExcel, string AttachmentPathPDF)
+        {
+            string sHeader, sMessage;
+
+            sHeader = emailsubject;
+            sMessage = emailcontent;
+
+            MailMessage mail = new MailMessage();
+
+            //  mail.From = new MailAddress( sFromEmail , sFromEmail);
+            mail.From = new MailAddress(sFromEmail, sFromEmail);         
+            // mail.From = new MailAddress(sFromEmail);
+            mail.To.Add(new MailAddress(sToEmail, sToEmail));
+            //if (ccEmail)
+            //{
+            //    mail.CC.Add(ToEmailSettings);
+            //}
+            //set the content
+            mail.Subject = sHeader;
+            mail.Body = sMessage;
+            mail.IsBodyHtml = true;
+            if (AttachmentPathExcel != "")
+            {
+                Attachment myAttachment = new Attachment(AttachmentPathExcel);
+                mail.Attachments.Add(myAttachment);
+            }
+            if (AttachmentPathPDF != "")
+            {
+                Attachment myAttachment = new Attachment(AttachmentPathPDF);
+                mail.Attachments.Add(myAttachment);
+            }
+            //send the message
+            // string susername, spass;
+            //susername = "socialreferral.testing@gmail.com";
+            // susername = FromEmailSettings;
+            // spass = "flexsin$$#7856";
+            //System.Net.NetworkCredential basicAuthenticationInfo = new System.Net.NetworkCredential(susername, spass);
+
+            const string UserName = "AKIAIJ6GPJKNYKXVBJLQ";
+            const string Password = "ApYjCYLyRR9LBFERugGZx/PCI25g8Z7GKmi30TZX2Saz";
+            var smtp = new SmtpClient
+            {
+                Host = "email-smtp.us-east-1.amazonaws.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = true,
+                Credentials = new NetworkCredential(UserName, Password)
+                //Credentials = new NetworkCredential(FromEmailSettings, "flexsin$$#789")
+            };
+            try
+            {
+                smtp.Send(mail);
+            }
+            catch (Exception ex)
+            {
+            }
+            
         }
         public static string FormatCredits(object credits)
         {

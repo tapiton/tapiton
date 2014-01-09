@@ -45,7 +45,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="Twitterizer2">
-      <HintPath>..\..\..\..\..\..\Users\Flexsin\Desktop\DLL\DLL\Twitterizer2.dll</HintPath>
+      <HintPath>C:\Users\Dotnet113\Desktop\bin\Twitterizer2.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -78,10 +78,6 @@
     <ProjectReference Include="..\BAL\BAL.csproj">
       <Project>{b803507a-4ed1-4132-bea9-5cc3c2bd9a96}</Project>
       <Name>BAL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DAL\DAL.csproj">
-      <Project>{91de4593-fc33-4dd4-b0c5-925226243e50}</Project>
-      <Name>DAL</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

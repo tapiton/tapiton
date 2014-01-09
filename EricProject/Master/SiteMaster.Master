@@ -1,0 +1,244 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="SiteMaster.master.cs"
+    Inherits="Master_SiteMaster" %>
+
+<%@ Register Src="~/UC/MenuUC.ascx" TagPrefix="UC" TagName="MenuUC" %>
+<%@ Register Src="~/UC/MenuCustomer.ascx" TagPrefix="UC" TagName="MenuCustomer" %>
+<%@ Register Src="~/UC/MenuMerchant.ascx" TagPrefix="UC" TagName="MenuMerchant" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <link rel="shortcut icon" href="<%=ResolveUrl(ConfigurationManager.AppSettings["pageURL"]+"images/fav.ico")%>" />
+
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
+    <script type="text/javascript" src="<%=ConfigurationManager.AppSettings["pageURL"] %>includes/js/jquery.min.js"></script>
+    <script type="text/javascript" src="<%=ConfigurationManager.AppSettings["pageURL"] %>includes/js/plugins/spinner/ui.spinner.js"></script>
+    <script type="text/javascript" src="<%=ConfigurationManager.AppSettings["pageURL"] %>includes/js/plugins/spinner/jquery.mousewheel.js"></script>
+    <script type="text/javascript" src="<%=ConfigurationManager.AppSettings["pageURL"] %>includes/js/jquery-ui.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //Example of preserving a JavaScript event for inline calls.
+            $("#click").click(function () {
+                $('#click').css({ "background-color": "#000", "color": "#fff", "cursor": "inherit" }).text("Open this window again and this message will still be here.");
+                return false;
+            });
+        });
+        //Validation start
+        function CheckValidation() {
+            var x = document.getElementById('<%=txtTwitterEmail.ClientID %>').value;
+            var atpos = x.indexOf("@");
+            var dotpos = x.lastIndexOf(".");
+            if (document.getElementById('<%=txtTwitterEmail.ClientID %>').value == "") {
+                document.getElementById("DivMerchantLoginMsg").style.display = "block";
+                document.getElementById("DivMerchantLoginMsg").innerHTML = "Email is Required.";
+                return false;
+            }
+            else if (atpos < 1 || dotpos < atpos + 2 || dotpos + 2 >= x.length) {
+                document.getElementById("DivMerchantLoginMsg").style.display = "block";
+                document.getElementById("DivMerchantLoginMsg").innerHTML = "Please enter valid e-mail address.";
+                return false;
+            }
+        }
+
+
+        //Validation
+        function checkIt(evt) {
+            evt = (evt) ? evt : window.event
+            var charCode = (evt.which) ? evt.which : evt.keyCode
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                return false
+            }
+            else {
+                return true
+            }
+        }
+        //Validation
+
+        //Set Interval
+        function FncSetInterval() {
+            var xmlhttp;
+            if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlhttp = new XMLHttpRequest();
+            }
+            else {// code for IE6, IE5
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                }
+            }
+            xmlhttp.open("GET", document.getElementById('<%=hiddenPageURL.ClientID%>').value + "Site/RefreshSessionPage.aspx", true);
+            xmlhttp.send();
+
+        }
+
+        function onLoadSetInterval() {
+            self.setInterval(function () { FncSetInterval() }, 600000);
+        }
+
+        //Set Interval
+        function CheckCookieEnable() {
+            var cookieEnabled = (navigator.cookieEnabled) ? true : false
+            //if not IE4+ nor NS6+
+            if (typeof navigator.cookieEnabled == "undefined" & !cookieEnabled) {
+                document.cookie = "testcookie"
+                cookieEnabled = (document.cookie.indexOf("testcookie") != -1) ? true : false
+
+            }
+            if (!cookieEnabled) {
+                window.location.href = document.getElementById('<%=hiddenPageURL.ClientID%>').value + "site/CookieEnable";
+                return false;
+            }
+        }
+    </script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body onload="onLoadSetInterval()">
+    <form id="form1" runat="server">
+        <asp:HiddenField ID="hiddenPageURL" runat="server" />
+        <asp:HiddenField ID="HiddenCheckEmailExists" runat="server" />
+        <asp:ScriptManager ID="ScriptManager1" runat="server">
+            <Services>
+                <asp:ServiceReference Path="~/WebServices/Admin.asmx" />
+                <asp:ServiceReference Path="~/WebServices/SiteService.asmx" />
+                <asp:ServiceReference Path="~/WebServices/MerchantService.asmx" />
+            </Services>
+        </asp:ScriptManager>
+        <!--  / wrapper \ -->
+        <div id="wrapper">
+            <!--  / header container \ -->
+            <asp:Panel runat="server" ID="panel1"></asp:Panel>
+            <%--  <UC:MenuUC ID="Menu1" runat="server"  /> --%>
+            <!--  \ header container / -->
+            <!--  / content place holder container \ -->
+            <div id="ContentPlaceHolderContainer" style="overflow: hidden; height: auto;">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+            <!--  \ content place holder container / -->
+            <!-- \ content container / -->
+            <!--  / footer container \ -->
+            <div id="footerCntr">
+                <div class="footerBox">
+                    <div class="footerMid">
+                        <div class="left">
+                            <ul>
+                                <li id="li_Home_Footer" runat="server"><a href="<%=ConfigurationManager.AppSettings["pageURL"] %>Home">Home</a></li>
+
+                                <li id="li_HowItWorks_Footer" runat="server"><a href="<%=ConfigurationManager.AppSettings["pageURL"] %>how-it-works">How it Works</a></li>
+                                <li id="li_SiteFAQ_Footer" runat="server"><a href="<%=ConfigurationManager.AppSettings["pageURL"] %>Site/FAQ">FAQ</a></li>
+                                <li id="li_Site_Privacy_Policy_Footer" runat="server"><a href="<%=ConfigurationManager.AppSettings["pageURL"] %>privacy-policy">Privacy
+                                Policy</a></li>
+                                <li id="li_Terms_and_Conditions_Footer" runat="server"><a href="<%=ConfigurationManager.AppSettings["pageURL"] %>terms-and-conditions">Terms and Conditions</a></li>
+                                <li><a href="<%=ConfigurationManager.AppSettings["pageURL"] %>Contactus">Contact Us</a></li>
+                            </ul>
+                        </div>
+                        <div class="right">
+                            <span>Follow on:</span>
+                            <ul>                               
+                                <li class="twitter"><a href="#">Twitter</a></li>
+                                <li class="facebook"><a href="http://www.facebook.com/tapitonllc" target="_blank">Facebook</a></li>
+                            <%--   <li class="google_plus"><a href="#">Google Plus</a></li>--%>
+                                <li class="linkedin"><a href="#">Linked In</a></li>
+                            </ul>
+                        </div>
+                        <div class="clr">
+                        </div>
+                    </div>
+                </div>
+                <div class="copyrightBox">
+                    <div class="copyrightMid">
+                        <div class="left">
+                            &copy; 2014 Tap It On, LLC. All right reserved.
+                        </div>
+                       <%-- <div class="right">
+                            Website design &amp; developed by Flexsin
+                        </div>--%>
+                        <div class="clr">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--  \ footer container / -->
+        </div>
+        <div class="loginPopup" id="loginPopup" style="position: absolute; top: 100px; left: 620px; display: none;">
+            <div class="formBanner formBanner1">
+                <div class="bottom">
+                    <div class="mid">
+                        <div class="virtical" id="tab1">
+                            <div class="formHd">
+                                <span>&nbsp;</span>Complete your registration
+                            <div class="deletebg">
+                                <img src="<%=ConfigurationManager.AppSettings["pageURL"] %>images/delete_bg.png"
+                                    alt="" />
+                            </div>
+                                <div class="clr">
+                                </div>
+                            </div>
+                            <div class="formField">
+                                &nbsp;
+                            <div class="clr">
+                            </div>
+                            </div>
+                            <div class="formField">
+                                <div class="formLbl">
+                                    Email<span style="color: Red;">*</span>
+                                </div>
+                                <input type="text" class="field" id="txtTwitterEmail" runat="server" />
+
+                                <div class="clr">
+                                </div>
+                            </div>
+                            <div class="formField">
+                                &nbsp;
+                            </div>
+                            <div class="forgotBut">
+                                <asp:Button ID="btnCreateAccount" runat="server" Text="Create" CssClass="botton"
+                                    OnClick="btnCreateAccount_Click" OnClientClick="return CheckValidation();" />
+                                <div class="clr">
+                                </div>
+                            </div>
+                            <div class="fromFree">
+                                <div class="errer" id="DivMerchantLoginMsg" style="display: none;">
+                                </div>
+                                <div class="clr">
+                                </div>
+                            </div>
+                            <div class="fromFree fromFree1">
+                                <div class="clr">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+
+            $(document).ready(function () {
+        <%if (Request.QueryString["p"] != null)
+          { %>
+                document.getElementById("loginPopup").style.display = "block";
+                <%} %>
+            });
+        </script>
+        <script>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-46746466-1', 'tapiton.com');
+            ga('send', 'pageview');
+
+        </script>
+    </form>
+</body>
+</html>

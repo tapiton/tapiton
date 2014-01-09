@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <TapItOn_Events>
+            <active>true</active>
+            <codePool>local</codePool>
+        </TapItOn_Events>
+    </modules>
+</config> 

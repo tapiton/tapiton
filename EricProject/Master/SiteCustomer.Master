@@ -1,0 +1,146 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="SiteCustomer.master.cs" Inherits="EricProject.Master.SiteCustomer" %>
+
+<%@ Register Src="~/UC/MenuCustomer.ascx" TagPrefix="UC" TagName="MenuCustomer" %>
+<%@ Register Src="~/UC/MenuUC.ascx" TagPrefix="UC" TagName="MenuUC" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <link rel="shortcut icon" href="<%=ResolveUrl(ConfigurationManager.AppSettings["pageURL"]+"images/fav.ico")%>" />
+
+    <script type="text/javascript" src="<%=ConfigurationManager.AppSettings["pageURL"] %>includes/js/jquery.min.js"></script>
+    <script type="text/javascript" src="<%=ConfigurationManager.AppSettings["pageURL"] %>includes/js/plugins/spinner/ui.spinner.js"></script>
+    <script type="text/javascript" src="<%=ConfigurationManager.AppSettings["pageURL"] %>includes/js/plugins/spinner/jquery.mousewheel.js"></script>
+    <script type="text/javascript" src="<%=ConfigurationManager.AppSettings["pageURL"] %>includes/js/jquery-ui.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //Example of preserving a JavaScript event for inline calls.
+            $("#click").click(function () {
+                $('#click').css({ "background-color": "#000", "color": "#fff", "cursor": "inherit" }).text("Open this window again and this message will still be here.");
+                return false;
+            });
+        });
+
+        //Validation
+        function checkIt(evt) {
+            evt = (evt) ? evt : window.event
+            var charCode = (evt.which) ? evt.which : evt.keyCode
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                return false
+            }
+            else {
+                return true
+            }
+        }
+        //Validation
+
+        //Set Interval
+        function FncSetInterval() {
+            var xmlhttp;
+            if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlhttp = new XMLHttpRequest();
+            }
+            else {// code for IE6, IE5
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                }
+            }
+            xmlhttp.open("GET", document.getElementById('<%=hiddenPageURL.ClientID%>').value + "Site/RefreshSessionPage.aspx", true);
+            xmlhttp.send();
+
+        }
+
+        function onLoadSetInterval() {
+            self.setInterval(function () { FncSetInterval() }, 600000);
+        }
+
+        //Set Interval
+    </script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body onload="onLoadSetInterval()">
+    <form id="form1" runat="server">
+        <asp:HiddenField ID="hiddenPageURL" runat="server" />
+        <asp:ScriptManager ID="ScriptManager1" runat="server">
+            <Services>
+                <asp:ServiceReference Path="~/WebServices/Admin.asmx" />
+                <asp:ServiceReference Path="~/WebServices/SiteService.asmx" />
+                <asp:ServiceReference Path="~/WebServices/MerchantService.asmx" />
+            </Services>
+        </asp:ScriptManager>
+        <!--  / wrapper \ -->
+        <div id="wrapper">
+            <!--  / header container \ -->
+
+            <UC:MenuCustomer ID="Menu3" runat="server" />
+            <!--  \ header container / -->
+            <!--  / content place holder container \ -->
+            <div id="ContentPlaceHolderContainer" style="overflow: hidden; height: auto;">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+            <!--  \ content place holder container / -->
+            <!-- \ content container / -->
+            <!--  / footer container \ -->
+            <div id="footerCntr">
+                <div class="footerBox">
+                    <div class="footerMid">
+                        <div class="left">
+                            <ul>
+                                <li id="li_Home_Footer" runat="server"><a href="<%=ConfigurationManager.AppSettings["pageURL"] %>Home">Home</a></li>
+                                <li id="li_SiteFAQ_Footer" runat="server"><a href="<%=ConfigurationManager.AppSettings["pageURL"] %>Site/FAQ">FAQ</a></li>
+                                <li id="li_Site_Privacy_Policy_Footer" runat="server"><a href="<%=ConfigurationManager.AppSettings["pageURL"] %>Site/Privacy-Policy">Privacy
+                                Policy</a></li>
+                                <li id="li_Terms_and_Conditions_Footer" runat="server"><a href="<%=ConfigurationManager.AppSettings["pageURL"] %>Site/Terms-And-Conditions">Terms and Conditions</a></li>
+
+                            </ul>
+                        </div>
+                        <div class="right">
+                            <span>Follow on:</span>
+                            <ul>
+                                <li class="twitter"><a href="#">Twitter</a></li>
+                                <li class="facebook"><a href="http://www.facebook.com/tapitonllc" target="_blank">Facebook</a></li>                               
+                                <li class="linkedin"><a href="#">Linked In</a></li>
+                            </ul>
+                        </div>
+                        <div class="clr">
+                        </div>
+                    </div>
+                </div>
+                <div class="copyrightBox">
+                    <div class="copyrightMid">
+                        <div class="left">
+                            &copy; 2014 Tap It On, LLC. All right reserved.
+                        </div>
+                      <%--  <div class="right">
+                            Website design &amp; developed by Flexsin
+                        </div>--%>
+                        <div class="clr">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--  \ footer container / -->
+        </div>
+        <!--  \ wrapper / -->
+        <%-- <div id="divAfterTwitter" class="formBanner formBanner1" style="position: absolute;
+        top: 100px; left: 350px; display: none">--%>
+        <script>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-46746466-1', 'tapiton.com');
+            ga('send', 'pageview');
+
+        </script>
+    </form>
+</body>
+</html>

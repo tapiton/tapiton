@@ -1,0 +1,176 @@
+<?php
+/**
+ * Magento Enterprise Edition
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magento Enterprise Edition License
+ * that is bundled with this package in the file LICENSE_EE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magentocommerce.com/license/enterprise-edition
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2010 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://www.magentocommerce.com/license/enterprise-edition
+ */
+?>
+<div class="page-title">
+    <h1><?php echo $this->__('Your order has been received') ?></h1>
+</div>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<h2 class="sub-title"><?php echo $this->__('Thank you for your purchase!') ?></h2>
+
+<?php if ($this->getOrderId()):?>
+<?php if ($this->getCanViewOrder()) :?>
+    <p><?php echo $this->__('Your order # is: %s.', sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getViewOrderUrl()), $this->escapeHtml($this->getOrderId()))) ?></p>
+<?php  else :?>
+    <p><?php echo $this->__('Your order # is: %s.', $this->escapeHtml($this->getOrderId())) ?></p>
+<?php endif;?>
+    <p><?php echo $this->__('You will receive an order confirmation email with details of your order and a link to track its progress.') ?></p>
+<?php if ($this->getCanViewOrder() && $this->getCanPrintOrder()) :?>
+    <p>
+        <?php echo $this->__('Click <a href="%s" onclick="this.target=\'_blank\'">here to print</a> a copy of your order confirmation.', $this->getPrintUrl()) ?>
+        <?php echo $this->getChildHtml() ?>
+    </p>
+<?php endif;?>
+<?php endif;?>
+
+<?php if ($this->getAgreementRefId()): ?>
+    <p><?php echo $this->__('Your billing agreement # is: %s.', sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getAgreementUrl()), $this->escapeHtml($this->getAgreementRefId())))?></p>
+<?php endif;?>
+
+<?php if ($profiles = $this->getRecurringProfiles()):?>
+<p><?php echo $this->__('Your recurring payment profiles:'); ?></p>
+<ul class="disc">
+<?php foreach($profiles as $profile):?>
+<?php $profileIdHtml = ($this->getCanViewProfiles() ? sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getProfileUrl($profile)), $this->escapeHtml($this->getObjectData($profile, 'reference_id'))) : $this->escapeHtml($this->getObjectData($profile, 'reference_id')));?>
+    <li><?php echo $this->__('Payment profile # %s: "%s".', $profileIdHtml, $this->escapeHtml($this->getObjectData($profile, 'schedule_description')))?></li>
+<?php endforeach;?>
+</ul>
+<?php endif;?>
+
+<div class="buttons-set">
+    <button type="button" class="button" title="<?php echo $this->__('Continue Shopping') ?>" onclick="window.location='<?php echo $this->getUrl() ?>'"><span><span><?php echo $this->__('Continue Shopping') ?></span></span></button>
+</div>
+
+<?php
+
+/*
+$order_id = 53; //use your own order id
+$order = Mage::getModel("sales/order")->load($order_id); //load order by order id
+
+$items = $order->getItemsCollection(); 
+
+$billing_address = $order->getBillingAddress();
+echo $billing_address->getTelephone();
+echo $billing_address->getPostcode();
+
+echo "====7===<pre>";
+print_r($billing_address->getData());
+
+echo "<br><br>====8===<pre>";
+print_r($items);
+//use print_r($billing_address->getData()); to get all the available elements of the object
+*/
+
+
+
+$_order = Mage::getModel('sales/order')->loadByIncrementId($this->getOrderId());
+
+$billingaddress	= $_order->getBillingAddress();
+$shippingaddress = $_order->getShippingAddress();
+
+$country_name = Mage::getModel('directory/country')->load($billingaddress->getCountry())->getName();
+
+$orderId = $_order->getId();
+$customer_firstname = $_order->getCustomerFirstname();
+$customer_lastname = $_order->getCustomerLastname();
+$customer_name = $_order->getCustomerName();
+$customer_email	= $_order->getCustomerEmail();
+
+$billing_street_address = $billingaddress->getData("street");
+$billing_postcode = $billingaddress->getData("postcode");
+$billing_city = $billingaddress->getData("city");
+$billing_region = $billingaddress->getRegion();
+$billing_country = $country_name;
+
+$total_subtotal = $_order->subtotal;
+$total_shipping = $_order->shipping_amount;
+$total_tax = $_order->tax_amount;
+$total_discount = $_order->discount_amount;
+$total_amount = $_order->getGrandTotal();
+
+
+/*
+echo "Order Id : ".$_order->getId(); 
+echo "<br/>First Name : ".$_order->getCustomerFirstname(); 
+echo "<br/>Last Name : ".$_order->getCustomerLastname(); 
+echo "<br/><br/><br/> Name : ".$_order->getCustomerName(); 
+echo "<br/> Email : ".$_order->getCustomerEmail(); 
+echo "<br/><br/>";
+echo "<br/><b>Billing Address</b>";
+echo "<br/>Street : ".$billingaddress->getData("street") . " ";
+echo "<br/>Postcode : ".$billingaddress->getData("postcode") . " ";
+echo "<br/>City : ".$billingaddress->getData("city") . " ";
+echo "<br/>Region Name : ".$billingaddress->getRegion();  
+echo "<br/>Country : ".$country_name; 
+*/
+
+
+?>
+<script type="text/javascript">
+	!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = "https://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } } (document, "script", "twitter-wjs");
+</script>  
+<div id="div2"></div>
+<div id="div1"></div>
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script type="text/javascript">
+  jQuery.noConflict();
+  jQuery(document).ready(function() {
+  var socialItems='';
+  var Social_Referral_ID='{SOCIAL_REFERRAL_ID}';
+  var i=0;
+  var socialProducts=new Array();
+  <?php $_items = $_order->getItemsCollection(); ?>
+<?php $_index = 0; ?>
+<?php $_count = $_items->count(); ?>
+<?php foreach ($_items as $item): ?>
+	socialProducts[i]=new Object;
+	socialProducts[i]['product_id'] = '<?php echo $item->getSku(); ?>' ;
+	socialProducts[i]['itemname']	=  '<?php echo $item->getName(); ?>' ;
+	socialProducts[i]['price']		=  '<?php echo number_format($item->getPrice(),2); ?>'.replace('$','').replace('&amp;','');
+	socialProducts[i]['quantity']	=  '<?php echo $item->getQtyToInvoice(); ?>' ;
+	socialProducts[i]['subtotal']	=  '<?php echo number_format($item->getRowTotal(),2); ?>' ;
+
+	socialItems += encodeURIComponent(socialProducts[i]['product_id'] ) + '^';
+	socialItems += encodeURIComponent(socialProducts[i]['price'] ) + '^';
+	socialItems += encodeURIComponent(socialProducts[i]['quantity']) + '^';
+	socialItems +=encodeURIComponent(socialProducts[i]['itemname']) + '/';
+
+	i++;
+<?php endforeach; ?>
+socialItems = socialItems.substring(0, socialItems.length - 1);
+var socialParam = "<?php echo $customer_email; ?>/<?php echo $_order->getId(); ?>/Magento/<?php echo $customer_firstname; ?>/<?php echo $customer_lastname; ?>/<?php echo $_SERVER['HTTP_HOST']; ?>/<?php echo $total_subtotal; ?>/<?php echo $total_amount; ?>/<?php echo $total_discount; ?>/<?php echo $total_tax; ?>/0/0/<?php echo $total_shipping; ?>/" + socialItems;
+var social3dCardHead = document.getElementsByTagName("head")[0];
+var socialScript = document.createElement('script');
+socialScript.type = 'text/javascript';
+socialScript.src = "https://tapiton.com/Plugin/"+Social_Referral_ID+"/" + socialParam;
+social3dCardHead.appendChild(socialScript);
+
+var socialCSS = document.createElement("link");
+socialCSS.setAttribute("rel", "stylesheet");
+socialCSS.setAttribute("type", "text/css");
+socialCSS.setAttribute("href", "https://tapiton.com/Plugin/"+Social_Referral_ID+"/Resources/CSS");
+social3dCardHead.appendChild(socialCSS);
+});
+</script>

@@ -73,6 +73,8 @@ namespace BAL
         public string Merchant_email_ID { get; set; }
         public int Display_Type { get; set; }
         public string First_Name { get; set; }
+        public string Last_Name { get; set; }
+        public DateTime Created_On { get; set; }
     }
     public class _TransactionDetails
     {
@@ -97,6 +99,7 @@ namespace BAL
         public string SocialReferralSiteID { get; set; }
         public int Offer_ID { get; set; }
         public int referred_transaction_id { get; set; }
+        public int Merchant_Id {get;set;}
     }
     public class _credit_details
     {
@@ -207,6 +210,7 @@ namespace BAL
         public int Status { get; set; }
         public string Campaign_Title { get; set; }
         public int Display_Type { get; set; }
+        public string ProductURL { get; set; }
 
         public _MerchantCampaigns()
         {
@@ -222,6 +226,7 @@ namespace BAL
             BorderColor = "";
             ForeColor = "";
             Campaign_Title = "";
+            ProductURL = "";
         }
     }
 
@@ -280,6 +285,7 @@ namespace BAL
         public int Campaign_Id1 { get; set; }
         public int Campaign_Id2 { get; set; }
         public int Campaign_Id3 { get; set; }
+        public int TimePeriod { get; set; }
     }
     public class _Offer
     {

@@ -75,7 +75,22 @@ namespace DAL
             SqlDataReader DR = sqlobj.ExecuteSqlHelperDR("CheckTransactionHistoryPendingByMerchantId", values);
             return DR;
         }
-
+        public SqlDataReader GetTotalCredits(_Transaction obj)
+        {
+            var sqlobj = DBAccess.InstanceCreation();
+            object[] values = new object[1];
+            values[0] = obj.MerchantId;
+            SqlDataReader DR = sqlobj.ExecuteSqlHelperDR("GetTotalCredits", values);
+            return DR;
+        }
+        public SqlDataReader GetDetails(_Transaction obj)
+        {
+            var sqlobj = DBAccess.InstanceCreation();
+            object[] values = new object[1];
+            values[0] = obj.MerchantId;
+            SqlDataReader DR = sqlobj.ExecuteSqlHelperDR("GetDetails", values);
+            return DR;
+        }
         public SqlDataReader Transaction_Details_Total(_Transaction obj)
         {
             var sqlobj = DBAccess.InstanceCreation();

@@ -1,0 +1,204 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="AdminMaster.master.cs"
+    Inherits="Master_AdminMaster" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link rel="shortcut icon" href="<%=ResolveUrl(ConfigurationManager.AppSettings["pageURL"]+"images/fav.ico")%>"/>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+    <link href="<%=ConfigurationManager.AppSettings["pageURL"] %>includes/css/main.css"
+        rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="<%=ConfigurationManager.AppSettings["pageURL"] %>includes/js/jquery.min.js"></script>
+    <script type="text/javascript" src="<%=ConfigurationManager.AppSettings["pageURL"] %>includes/js/plugins/spinner/ui.spinner.js"></script>
+    <script type="text/javascript" src="<%=ConfigurationManager.AppSettings["pageURL"] %>includes/js/plugins/spinner/jquery.mousewheel.js"></script>
+    <script type="text/javascript" src="<%=ConfigurationManager.AppSettings["pageURL"] %>includes/js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="<%=ConfigurationManager.AppSettings["pageURL"] %>includes/js/plugins/charts/excanvas.min.js"></script>
+    <script type="text/javascript" src="<%=ConfigurationManager.AppSettings["pageURL"] %>includes/js/plugins/charts/jquery.flot.js"></script>
+    <script type="text/javascript" src="<%=ConfigurationManager.AppSettings["pageURL"] %>includes/js/plugins/charts/jquery.flot.orderBars.js"></script>
+    <script type="text/javascript" src="<%=ConfigurationManager.AppSettings["pageURL"] %>includes/js/plugins/charts/jquery.flot.pie.js"></script>
+    <script type="text/javascript" src="<%=ConfigurationManager.AppSettings["pageURL"] %>includes/js/plugins/charts/jquery.flot.resize.js"></script>
+    <script type="text/javascript" src="<%=ConfigurationManager.AppSettings["pageURL"] %>includes/js/plugins/charts/jquery.sparkline.min.js"></script>
+    <script type="text/javascript" src="<%=ConfigurationManager.AppSettings["pageURL"] %>includes/js/plugins/forms/uniform.js"></script>
+    <script type="text/javascript" src="<%=ConfigurationManager.AppSettings["pageURL"] %>includes/js/plugins/forms/jquery.cleditor.js"></script>
+    <script type="text/javascript" src="<%=ConfigurationManager.AppSettings["pageURL"] %>includes/js/plugins/forms/jquery.tagsinput.min.js"></script>
+    <script type="text/javascript" src="<%=ConfigurationManager.AppSettings["pageURL"] %>includes/js/plugins/forms/autogrowtextarea.js"></script>
+    <script type="text/javascript" src="<%=ConfigurationManager.AppSettings["pageURL"] %>includes/js/plugins/forms/jquery.maskedinput.min.js"></script>
+    <script type="text/javascript" src="<%=ConfigurationManager.AppSettings["pageURL"] %>includes/js/plugins/forms/jquery.dualListBox.js"></script>
+    <script type="text/javascript" src="<%=ConfigurationManager.AppSettings["pageURL"] %>includes/js/plugins/forms/jquery.inputlimiter.min.js"></script>
+    <script type="text/javascript" src="<%=ConfigurationManager.AppSettings["pageURL"] %>includes/js/plugins/forms/chosen.jquery.min.js"></script>
+    <script type="text/javascript" src="<%=ConfigurationManager.AppSettings["pageURL"] %>includes/js/plugins/wizard/jquery.form.js"></script>
+    <script type="text/javascript" src="<%=ConfigurationManager.AppSettings["pageURL"] %>includes/js/plugins/wizard/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="<%=ConfigurationManager.AppSettings["pageURL"] %>includes/js/plugins/wizard/jquery.form.wizard.js"></script>
+    <script type="text/javascript" src="<%=ConfigurationManager.AppSettings["pageURL"] %>includes/js/plugins/uploader/plupload.js"></script>
+    <script type="text/javascript" src="<%=ConfigurationManager.AppSettings["pageURL"] %>includes/js/plugins/uploader/plupload.html5.js"></script>
+    <script type="text/javascript" src="<%=ConfigurationManager.AppSettings["pageURL"] %>includes/js/plugins/uploader/plupload.html4.js"></script>
+    <script type="text/javascript" src="<%=ConfigurationManager.AppSettings["pageURL"] %>includes/js/plugins/uploader/jquery.plupload.queue.js"></script>
+    <script type="text/javascript" src="<%=ConfigurationManager.AppSettings["pageURL"] %>includes/js/plugins/tables/datatable.js"></script>
+    <script type="text/javascript" src="<%=ConfigurationManager.AppSettings["pageURL"] %>includes/js/plugins/tables/resizable.min.js"></script>
+    <script type="text/javascript" src="<%=ConfigurationManager.AppSettings["pageURL"] %>includes/js/plugins/ui/jquery.tipsy.js"></script>
+    <script type="text/javascript" src="<%=ConfigurationManager.AppSettings["pageURL"] %>includes/js/plugins/ui/jquery.collapsible.min.js"></script>
+    <script type="text/javascript" src="<%=ConfigurationManager.AppSettings["pageURL"] %>includes/js/plugins/ui/jquery.prettyPhoto.js"></script>
+    <script type="text/javascript" src="<%=ConfigurationManager.AppSettings["pageURL"] %>includes/js/plugins/ui/jquery.progress.js"></script>
+    <script type="text/javascript" src="<%=ConfigurationManager.AppSettings["pageURL"] %>includes/js/plugins/ui/jquery.timeentry.min.js"></script>
+    <script type="text/javascript" src="<%=ConfigurationManager.AppSettings["pageURL"] %>includes/js/plugins/ui/jquery.colorpicker.js"></script>
+    <script type="text/javascript" src="<%=ConfigurationManager.AppSettings["pageURL"] %>includes/js/plugins/ui/jquery.jgrowl.js"></script>
+    <script type="text/javascript" src="<%=ConfigurationManager.AppSettings["pageURL"] %>includes/js/plugins/ui/jquery.breadcrumbs.js"></script>
+    <script type="text/javascript" src="<%=ConfigurationManager.AppSettings["pageURL"] %>includes/js/plugins/ui/jquery.sourcerer.js"></script>
+    <script type="text/javascript" src="<%=ConfigurationManager.AppSettings["pageURL"] %>includes/js/plugins/calendar.min.js"></script>
+    <script type="text/javascript" src="<%=ConfigurationManager.AppSettings["pageURL"] %>includes/js/plugins/elfinder.min.js"></script>
+    <script type="text/javascript" src="<%=ConfigurationManager.AppSettings["pageURL"] %>includes/js/custom.js"></script>
+    <script type="text/javascript" src="<%=ConfigurationManager.AppSettings["pageURL"] %>includes/js/charts/chart.js"></script>
+    <script type="text/javascript" src="<%=ConfigurationManager.AppSettings["pageURL"] %>includes/js/role.js"></script>
+    <script src="<%=ConfigurationManager.AppSettings["pageURL"] %>includes/js/Handler.js"
+        type="text/javascript"></script>
+    <%--<script type="text/javascript" src="<%=ConfigurationManager.AppSettings["pageURL"] %>includes/js/plugins/forms/jquery.validationEngine-en.js"></script>--%>
+    <script type="text/javascript" src="<%=ConfigurationManager.AppSettings["pageURL"] %>includes/js/plugins/forms/jquery.validationEngine.js"></script>
+    <script type="text/javascript" src="<%=ConfigurationManager.AppSettings["pageURL"] %>includes/js/plugins/tables/tablesort.min.js"></script>
+    <script type="text/javascript">
+        //Validation
+        function checkIt(evt) {
+            evt = (evt) ? evt : window.event
+            var charCode = (evt.which) ? evt.which : evt.keyCode
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                return false
+            }
+            else {
+                return true
+            }
+        }
+        //Validation
+    </script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="validate" runat="server" class="form">
+    <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true">
+        <Services>
+            <asp:ServiceReference Path="~/WebServices/Admin.asmx" />
+        </Services>
+    </asp:ScriptManager>
+    <%-- <div>--%>
+    <div id="leftSide">
+        <div class="logo">
+            <a href="<%=ConfigurationManager.AppSettings["pageURL"] %>Admin/Default.aspx">
+                <img src="<%=ConfigurationManager.AppSettings["pageURL"] %>images/logo.png" alt="" /></a></div>
+        <!-- General balance widget -->
+        <div class="genBalance">
+            <a href="#" title="" class="amount"><span>Current Month's Revenue:</span> <span class="balanceAmount">
+                $10,900.36</span> </a>
+        </div>
+        <!-- Next update progress widget -->
+        <div class="sidebarSep">
+        </div>
+        <!-- Left navigation -->
+        <ul id="menu" class="nav">
+            <%--<li class="dash"><a href="<%=ConfigurationManager.AppSettings["pageURL"] %>Admin/Default.aspx"
+                title="Dashboard"><span>Dashboard</span></a></li>--%>
+            <asp:Literal ID="litDashboard" runat="server"></asp:Literal>
+            <li class="charts" id="liReportingStatistics" style="display: none"><a href="#" title="">
+                <span>Reporting Statistics</span></a></li>
+            <%-- <li class="forms"><a href="<%=ConfigurationManager.AppSettings["pageURL"] %>Admin/CustomerManagement.aspx"
+                title=""><span>Customer Management</span> </li>--%>
+            <asp:Literal ID="litCustomerManagement" runat="server"></asp:Literal>
+          <%--   <li class="ui" id="liManagemerchantaccounts" style="display:none"><a href="<%=ConfigurationManager.AppSettings["pageURL"] %>Admin/ManageMerchantAccount.aspx" title=""><span>Manage merchant
+                accounts</span></a></li>--%>
+            <asp:Literal ID="litManageMerchantAccounts" runat="server"></asp:Literal>
+            <li class="tables" id="liManageCredits" style="display: none"><a href="#" title="" class="exp"><span>
+                Manage Credits</span></a>
+                <ul class="sub">
+                 <li><a href="<%=ConfigurationManager.AppSettings["pageURL"] %>Admin/AddCredits.aspx"
+                        title="">Add New Credits</a></li>
+                </ul>
+                </li>
+            <li class="typo" id="limanageemailevents" style="display: none"><a href="<%=ConfigurationManager.AppSettings["pageURL"] %>Admin/Email_Management.aspx" title="">
+                <span>Manage Email Events</span></a></li>
+            <li class="ui" id="lirolemanagemnet" style="display: none"><a href="#" title="" class="exp">
+                <span>Role Management</span></a>
+                <ul class="sub">
+                    <li><a href="<%=ConfigurationManager.AppSettings["pageURL"] %>Admin/AddNewSubAdmin.aspx"
+                        title="">Add New Subadmin</a></li>
+                    <li class="last"><a href="#" title="">Manage Subadmin Roles</a></li>
+                </ul>
+            </li>
+            <li class="typo" style="display: none" id="licontentmanagementsystem"><a href="#"
+                title="" class="exp"><span>Content Management System</span></a>
+                <ul class="sub">
+                    <li><a href="<%=ConfigurationManager.AppSettings["pageURL"] %>Admin/managestaticdata.aspx?pid=1"
+                        title="">How it works</a></li>
+                    <li><a href="<%=ConfigurationManager.AppSettings["pageURL"] %>Admin/managestaticdata.aspx?pid=2"
+                        title="">Features</a></li>
+                    <li><a href="<%=ConfigurationManager.AppSettings["pageURL"] %>Admin/managestaticdata.aspx?pid=3"
+                        title="">Pricing</a></li>
+                    <li><a href="<%=ConfigurationManager.AppSettings["pageURL"] %>Admin/managestaticdata.aspx?pid=4"
+                        title="">Privacy policy</a></li>
+                    <li><a href="<%=ConfigurationManager.AppSettings["pageURL"] %>Admin/managestaticdata.aspx?pid=5"
+                        title="">Terms & conditions</a></li>
+                    <li><a href="<%=ConfigurationManager.AppSettings["pageURL"] %>Admin/managestaticdata.aspx?pid=6"
+                        title="">Documentation</a></li>
+                </ul>
+            </li>
+            <%-- <li class="typo"><a href="<%=ConfigurationManager.AppSettings["pageURL"] %>Admin/FAQ_Management.aspx"
+                title=""><span>FAQ Management</span></a></li>--%>
+            <asp:Literal ID="litFAQManagement" runat="server"></asp:Literal>
+            <li class="ui" style="display: none" id="liadminaccountsetting"><a href="#" title="">
+                <span>Admin Account Settings</span></a></li>
+        </ul>
+    </div>
+    <!-- Right side -->
+    <div id="rightSide">
+        <!-- Top fixed navigation -->
+        <div class="topNav">
+            <div class="wrapper">
+                <div class="welcome">
+                    <a href="#" title="">
+                        <img src="<%=ConfigurationManager.AppSettings["pageURL"] %>images/userPic.png" alt="" /></a><span>Howdy,
+                            Eugene!</span></div>
+                <div class="userNav">
+                    <ul>
+                        <li><a href="<%=ConfigurationManager.AppSettings["pageURL"] %>Admin/ManageProfile.aspx"
+                            title="">
+                            <img src="<%=ConfigurationManager.AppSettings["pageURL"] %>images/icons/topnav/profile.png"
+                                alt="" /><span>Profile</span></a></li>
+                        <li><a href="#" title="">
+                            <img src="<%=ConfigurationManager.AppSettings["pageURL"] %>images/icons/topnav/tasks.png"
+                                alt="" /><span>Tasks</span></a></li>
+                        <li><a href="#" title="">
+                            <img src="<%=ConfigurationManager.AppSettings["pageURL"] %>images/icons/topnav/settings.png"
+                                alt="" /><span>Settings</span></a></li>
+                        <li><a href="<%=ConfigurationManager.AppSettings["pageURL"] %>Admin/Login.aspx" title="">
+                            <img src="<%=ConfigurationManager.AppSettings["pageURL"] %>images/icons/topnav/logout.png"
+                                alt="" /><span>Logout</span></a></li>
+                    </ul>
+                </div>
+                <div class="clear">
+                </div>
+            </div>
+        </div>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+    <!-- Footer line -->
+    <div id="footer">
+        <div class="wrapper">
+            Copyright © 2013-2014 <a href="#" target="_blank">Referral Website</a> All rights
+            reserved.</div>
+    </div>
+    </div>
+    <div class="clear">
+    </div>
+    <div align="center" id="lblMessage" style="position: fixed; display: none; width: 100%;
+        top: 0px; height: 1px; z-index: 999999">
+        <div style="width: 200px; background-color: #f9edbe; color: #222222; border: solid 1px #f0c36d;
+            font-family: Arial; font-size: 12px; padding: 3px 1px; -moz-border-radius: 3px;
+            border-radius: 3px; -moz-box-shadow: 0 4px 10px #8B8B8B; box-shadow: 0 4px 10px #8B8B8B;"
+            id="lblMessageText">
+        </div>
+    </div>
+    <script type="text/javascript">
+        ShowRoleUser('<%=Session["UserID"] %>');
+    </script>
+    </form>
+</body>
+</html>

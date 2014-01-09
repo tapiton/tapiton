@@ -35,20 +35,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BusinessObject">
-      <HintPath>..\..\..\..\..\..\Users\Flexsin\Desktop\DLL\DLL\BusinessObject.dll</HintPath>
-    </Reference>
     <Reference Include="CKEditor.NET">
-      <HintPath>..\..\..\..\..\..\Users\Flexsin\Desktop\DLL\DLL\CKEditor.NET.dll</HintPath>
+      <HintPath>C:\Users\Dotnet113\Desktop\bin\CKEditor.NET.dll</HintPath>
     </Reference>
     <Reference Include="Facebook">
-      <HintPath>..\..\..\..\..\..\Users\Flexsin\Desktop\DLL\DLL\Facebook.dll</HintPath>
+      <HintPath>C:\Users\Dotnet113\Desktop\bin\Facebook.dll</HintPath>
     </Reference>
     <Reference Include="Facebook.Web">
-      <HintPath>..\..\..\..\..\..\Users\Flexsin\Desktop\DLL\DLL\Facebook.Web.dll</HintPath>
+      <HintPath>C:\Users\Dotnet113\Desktop\bin\Facebook.Web.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ApplicationBlocks.Data">
-      <HintPath>..\..\..\..\..\..\Users\Flexsin\Desktop\DLL\DLL\Microsoft.ApplicationBlocks.Data.dll</HintPath>
+      <HintPath>C:\Users\Dotnet113\Desktop\bin\Microsoft.ApplicationBlocks.Data.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -59,7 +56,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="Twitterizer2">
-      <HintPath>..\..\..\..\..\..\Users\Flexsin\Desktop\DLL\DLL\Twitterizer2.dll</HintPath>
+      <HintPath>C:\Users\Dotnet113\Desktop\bin\Twitterizer2.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -88,6 +85,10 @@
     <ProjectReference Include="..\BAL\BAL.csproj">
       <Project>{b803507a-4ed1-4132-bea9-5cc3c2bd9a96}</Project>
       <Name>BAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BusinessObject\BusinessObject.csproj">
+      <Project>{efb69ea5-4579-4b31-af20-2315be301404}</Project>
+      <Name>BusinessObject</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

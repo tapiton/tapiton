@@ -1,0 +1,54 @@
+.widget {
+    background: none repeat scroll 0 0 #F9F9F9;
+    border: 1px solid #CDCDCD;
+    clear: both;
+    margin-top: 32px;
+}
+.widget, .middleNav, .sItem, .statsDetailed {
+    box-shadow: 0 1px 0 #FFFFFF;
+}
+.middleNav, .widget, .sItem, .statsDetailed, .statsContent, .nav li a strong, .controlB ul li, .toggle, .smalldd ul li a strong {
+    border-radius: 3px 3px 3px 3px;
+}
+.widget .title:first-child, ul.tabs, .toggle .title:first-child {
+}
+.widget .title {
+    background: url("../../images/backgrounds/titleBg.png") repeat-x scroll 0 0 #EFEFEF;
+    border-bottom: 1px solid #CDCDCD;
+    height: 37px;
+}
+
+.widget .title .titleIcon {
+    border-right: 1px solid #D5D5D5;
+    float: left;
+    padding: 11px;
+}
+table.display {
+    border-collapse: collapse;
+    margin: 0 auto;
+    width: 100%;
+}
+table {
+    border-collapse: collapse;
+}
+
+table.display td:first-child {
+    border-left: medium none;
+}
+table.display td {
+    border-left: 1px solid #E7E7E7 !important;
+    padding: 8px 10px;
+}
+table.display tr {
+    border-bottom: 1px solid #E7E7E7 !important;
+}
+
+.widget .title h6 {
+    float: left;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 9px 12px 8px;
+}
+h6 {
+    font-size: 14px;
+}

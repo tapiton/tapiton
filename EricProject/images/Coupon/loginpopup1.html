@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Lesson Face</title>
+<style>
+	.clr { clear:both; overflow: hidden; height: 0px; }
+	.loginPopup1 { padding: 10px; left: 50px; width: 501px; background: #fff; border: 5px solid #dddddd;}
+
+		.imagebggap { margin: 15px 17px 0 0; display: block; }
+		.imagebggap1 { margin-right: 96px; margin-top: -5px; float:right; }
+		.loginBg { width: 100%; float: left; padding: 0px; margin: 0px; }
+		
+		.loginHd {border-bottom: 1px solid #BDBDBD; color: #000000; font-family: "Trebuchet MS"; font-size: 18px; font-weight: normal; margin: 0; padding: 0 0 8px;}
+		.loginHd.loginHd1 {font-size:17px; border-bottom:1px solid #a4a4a4; color: #000; font-weight: bold; padding-bottom:0px; position:relative;}
+		.closeImg {position:absolute; top:-16px; right:95px;}
+		.loginField { padding-bottom: 10px; }
+		.loginField .field { padding: 0 10px; background: url("../images/field_bg.png") repeat-x scroll 0 0 transparent;border: 1px solid #CDD1DB;height: 30px;width: 291px;}		
+		.loginField textarea { padding: 5px 10px; background: url("../images/field_bg.png") repeat-x scroll 0 0 transparent;border: 1px solid #CDD1DB;height: 70px;width: 391px;}
+		.loginField .button { width: 88px; height: 37px; color: #ffffff; font-weight: bold; float: left; border: 0px; background: url("../images/button_bg.png") repeat-x scroll 0 0 transparent; }
+		.loginField a { line-height: 37px; float: left; font-family: Arial; color: #000000; font-size: 14px; text-decoration: none; padding-right: 40px; text-align: right; }
+</style>
+
+</head>	
+	<div class="loginPopup1" id="loginPopup1">
+		<div class="bottom">
+			<div class="mid">
+				<div class="middle">
+					<div class="virtical">
+					
+						<div class="loginBg">
+						<div class="loginHd">Recipient Infomation <span class="closeImg"><a href="javascript://" onclick="login_hide('loginPopup1')"></a><img class="imagebggap" src="delete-bg.png" alt="" /></span></div><br />
+							<div class="clr"></div>
+						</div>
+						
+						<div class="loginBox">
+							
+							<div class="loginField">
+								
+								 <input type="text" value="Name" onfocus="if(this.value == 'Name') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Name';}" class="field">
+								<div class="clr"></div>
+							</div>
+							
+							<div class="loginField">
+								<input type="text" value="Subject" onfocus="if(this.value == 'Subject') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Subject';}" class="field">
+								
+								<div class="clr"></div>
+							</div>
+							<div class="loginField">
+								<textarea name="notes" cols="2" rows="2" onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;">Message</textarea>
+							
+								<div class="clr"></div>
+							</div>
+							
+							<div class="loginField">
+								<input type="button" class="button" value="Submit" />
+								
+								
+								<div class="clr"></div>
+							</div>
+							
+						
+						</div>
+						
+					<div class="clr"></div>
+					</div>
+					
+				</div> 
+				<div class="clr"></div>
+			 </div>
+		</div>
+	</div>
+</html>		
+		

@@ -1,0 +1,347 @@
+#pageheader
+        {
+            background: #6d84b4;
+            color: #fff;
+        }
+        body
+        {
+            background: #fff;
+            font-size: 11px;
+            font-family: 'lucida grande' ,tahoma,verdana,arial,sans-serif;
+            color: #333;
+            line-height: 1.28;
+            margin: 0;
+            padding: 0;
+            text-align: left;
+            direction: ltr;
+            unicode-bidi: embed;
+        }
+        .clearfix
+        {
+            zoom: 1;
+        }
+        .clearfix::after
+        {
+            clear: both;
+            content: ".";
+            display: block;
+            font-size: 0;
+            height: 0;
+            line-height: 0;
+            visibility: hidden;
+        }
+        .lfloat
+        {
+            float: left;
+        }
+        #pageheader #homelink
+        {
+            background: url(http://static.ak.fbcdn.net/rsrc.php/v2/yD/x/Cou7n-nqK52.gif) no-repeat 10px 50%;
+            color: #fff;
+            margin: 0;
+            padding: 8px 10px 8px 30px;
+        }
+        h1, h2, h3, h4, h5, h6
+        {
+            font-size: 13px;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .-cx-PRIVATE-fbSharerFrame__stageArea
+        {
+            border: 1px solid #bdc7d8;
+        }
+        .uiMentionsInput
+        {
+            position: relative;
+        }
+        .mbs
+        {
+            margin-bottom: 5px;
+        }
+        .-cx-PRIVATE-fbSharerFrame__root .uiMentionsInput .highlighter
+        {
+            font-size: 13px;
+        }
+        body .-cx-PRIVATE-fbComposerXMentionsInput__root .highlighter
+        {
+            padding: 5px;
+        }
+        .uiMentionsInput .highlighter
+        {
+            left: 0;
+            overflow: hidden;
+            position: absolute;
+            padding: 4px;
+            top: 0;
+        }
+        .uiMentionsInput .highlighterContent
+        {
+            display: inline-block;
+            max-width: 100%;
+        }
+        .uiMentionsInput .mentionsTextarea, .uiMentionsInput .mentionsTypeahead
+        {
+            height: 60px;
+        }
+        .uiTypeahead
+        {
+            background: #fff;
+            border: solid #bdc7d8;
+            border-width: 1px 0;
+            cursor: default;
+            position: relative;
+        }
+        .uiTypeahead .wrap
+        {
+            border: solid #bdc7d8;
+            border-width: 0 1px;
+        }
+        .uiTypeahead .innerWrap
+        {
+            overflow: hidden;
+            zoom: 1;
+        }
+        .uiTypeahead .textInput
+        {
+            background-color: transparent;
+            border: 0;
+            -webkit-box-sizing: border-box;
+            outline: 0;
+            width: 100%;
+        }
+        .uiMentionsInput .mentionsTextarea
+        {
+            line-height: 1.28;
+        }
+        .uiMentionsInput .mentionsTextarea, .uiMentionsInput .mentionsTypeahead
+        {
+            background: transparent;
+            zoom: 1;
+        }
+        .-cx-PRIVATE-fbSharerFrame__root .textInput
+        {
+            font-size: 13px;
+            padding: 5px;
+        }
+        .uiTextareaAutogrow
+        {
+            overflow: hidden;
+        }
+        .uiTextareaNoResize
+        {
+            resize: none;
+        }
+        .DOMControl_placeholder
+        {
+            color: #777;
+        }
+        textarea
+        {
+            max-width: 100%;
+        }
+        textarea, .inputtext, .inputpassword
+        {
+            border: 1px solid #bdc7d8;
+            font-family: 'lucida grande' ,tahoma,verdana,arial,sans-serif;
+            font-size: 11px;
+            margin: 0;
+            padding: 3px;
+            -webkit-appearance: none;
+            -webkit-border-radius: 0;
+        }
+        .mtm
+        {
+            margin-top: 10px;
+        }
+        .-cx-PRIVATE-fbSharerFrame__shareStage
+        {
+            border-top: 1px dashed #ccc;
+        }
+        .pam
+        {
+            padding: 10px;
+        }
+        .-cx-PRIVATE-fbSharerFrame__shareStage .UIShareStage_Image, .UIShareStage_WideImage
+        {
+            padding-bottom: 0;
+        }
+        .UIShareStage_Image
+        {
+            max-width: 100px;
+        }
+        .UIShareStage_Image, .UIShareStage_WideImage
+        {
+            float: left;
+            padding: 0 12px 12px 0;
+        }
+        .UIShareStage_ThumbPager
+        {
+            width: 100px;
+        }
+        img
+        {
+            display: inline-block;
+        }
+        .UIShareStage_ShareContent
+        {
+            overflow: hidden;
+        }
+        .-cx-PRIVATE-fbSharerFrame__root .UIShareStage_Title
+        {
+            word-wrap: break-word;
+        }
+        .UIShareStage_Title
+        {
+            font-size: 12px;
+            font-weight: bold;
+            color: #000;
+        }
+        .UIShareStage a.inline_edit
+        {
+            color: #000;
+            display: inline;
+            word-break: break-word;
+        }
+        .UIShareStage_Subtitle
+        {
+            font-size: 11px;
+            font-weight: normal;
+            color: #666;
+        }
+        .UIShareStage_Summary
+        {
+            margin-top: 6px;
+            padding: 0;
+            word-wrap: break-word;
+        }
+        .UIShareStage_BottomMargin
+        {
+            margin: 0 0 35px 0;
+            padding: 0;
+        }
+        .UIThumbPagerControl
+        {
+            position: relative;
+        }
+        .mts
+        {
+            margin-top: 5px;
+        }
+        .uiInputLabelRadio, .uiInputLabelCheckbox
+        {
+            float: left;
+            margin: 0;
+            padding: 0;
+        }
+        .uiInputLabel label
+        {
+            color: #333;
+            display: block;
+            font-weight: normal;
+            margin-left: 17px;
+            vertical-align: baseline;
+        }
+        .topborder
+        {
+            border-bottom: none;
+            border-left: none;
+            border-right: none;
+        }
+        .uiBoxGray
+        {
+            background-color: #f2f2f2;
+            border: 1px solid #ccc;
+        }
+        .rfloat
+        {
+            float: right;
+        }
+        .uiButtonLarge, .uiButtonLarge .uiButtonText, .uiButtonLarge input
+        {
+            font-size: 13px;
+            line-height: 16px;
+        }
+        .uiButtonLarge
+        {
+            height: 19px;
+        }
+        .uiButtonConfirm
+        {
+            background-image: url(http://static.ak.fbcdn.net/rsrc.php/v2/yk/x/weg572Ro6_J.png);
+            background-repeat: no-repeat;
+            background-size: auto;
+            background-position: -352px -495px;
+            background-color: #5b74a8;
+            border-color: #29447e #29447e #1a356e;
+        }
+        .uiButton, .uiButtonSuppressed:active, .uiButtonSuppressed:focus, .uiButtonSuppressed:hover
+        {
+            background-repeat: no-repeat;
+            background-size: auto;
+            background-position: -352px -446px;
+            background-color: #eee;
+            border: 1px solid #999;
+            border-bottom-color: #888;
+            -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, .1);
+        }
+        .uiButton
+        {
+            cursor: pointer;
+            display: inline-block;
+            font-size: 11px;
+            font-weight: bold;
+            line-height: 13px;
+            padding: 2px 6px;
+            text-align: center;
+            text-decoration: none;
+            vertical-align: top;
+            white-space: nowrap;
+        }
+        label
+        {
+            cursor: pointer;
+            color: #666;
+            font-weight: bold;
+            vertical-align: middle;
+        }
+        form.async_saving .uiButton.uiButtonSpecial .uiButtonText, form.async_saving .uiButton.uiButtonSpecial input, form.async_saving .uiButton.uiButtonConfirm .uiButtonText, form.async_saving .uiButton.uiButtonConfirm input, .uiButtonSpecial .uiButtonText, .uiButtonSpecial input, .uiButtonSpecial.uiButtonDisabled .uiButtonText, .uiButtonSpecial.uiButtonDisabled input, .uiButtonConfirm .uiButtonText, .uiButtonConfirm input, .uiButtonConfirm.uiButtonDisabled .uiButtonText, .uiButtonConfirm.uiButtonDisabled input
+        {
+            color: #fff;
+        }
+        .uiButton + .uiButton
+        {
+            margin-left: 4px;
+        }
+        .uiButtonText, .uiButton input
+        {
+            background: none;
+            border: 0;
+            cursor: pointer;
+            display: inline-block;
+            font-family: 'lucida grande' ,tahoma,verdana,arial,sans-serif;
+            font-size: 11px;
+            font-weight: bold;
+            line-height: 13px;
+            margin: 0;
+            padding: 1px 0 2px;
+            white-space: nowrap;
+        }
+        .uiButtonConfirm
+        {
+            background-image: url(http://static.ak.fbcdn.net/rsrc.php/v2/yk/x/weg572Ro6_J.png);
+            background-repeat: no-repeat;
+            background-size: auto;
+            background-position: -352px -495px;
+            background-color: #5b74a8;
+            border-color: #29447e #29447e #1a356e;
+        }
+        .uiButtonLarge, .uiButtonLarge .uiButtonText, .uiButtonLarge input
+        {
+            font-size: 13px;
+            line-height: 16px;
+        }
+        
+        
+        

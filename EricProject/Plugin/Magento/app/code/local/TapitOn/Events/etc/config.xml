@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <TapItOn_Events>
+            <version>0.1.1</version>
+        </TapItOn_Events>
+    </modules>
+    <frontend>
+        <routers>
+            <events>
+                <use>standard</use>
+                <args>
+                    <module>TapItOn_Events</module>
+                    <frontName>events</frontName>
+                </args>
+            </events>
+        </routers>
+        <layout>
+            <updates>
+                <events>
+                    <file>events.xml</file>
+                </events>
+            </updates>
+        </layout>
+    </frontend>
+
+    <global>
+        <models>
+            <events>
+                <class>TapItOn_Events_Model</class>
+                <resourceModel>events_mysql4</resourceModel>
+            </events>
+        </models>
+        <blocks>
+            <events>
+                <class>TapItOn_Events_Block</class>
+            </events>
+        </blocks>
+        <helpers>
+            <events>
+                <class>TapItOn_Events_Helper</class>
+            </events>
+        </helpers>
+    </global>
+</config>

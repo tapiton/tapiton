@@ -265,6 +265,15 @@ namespace DAL
             SqlDataReader DR = sqlobj.ExecuteSqlHelperDR("CheckOrderDetails", values);
             return DR;
         }
+        public SqlDataReader Checkcookie_Transaction(_TransactionDetails obj)
+        {
+            var sqlobj = DBAccess.InstanceCreation();
+            object[] values = new object[2];
+            values[0] = obj.Offer_ID;
+            values[1] = obj.Merchant_Id;
+            SqlDataReader DR = sqlobj.ExecuteSqlHelperDR("Checkcookie_Transaction", values);
+            return DR;
+        }
         public SqlDataReader CustomerDetails_Transaction(_TransactionDetails obj)
         {
             var sqlobj = DBAccess.InstanceCreation();
@@ -470,6 +479,20 @@ namespace DAL
 
 
             SqlDataReader DR = sqlobj.ExecuteSqlHelperDR("[Sp_Check_Customer1]", values);
+            return DR;
+        }
+
+        public SqlDataReader CheckCustomerLoginPagecus(_plugin obj)
+        {
+            var sqlobj = DBAccess.InstanceCreation();
+            object[] values = new object[4];
+            values[0] = obj.EmailID;
+            values[1] = obj.Password;
+            values[2] = obj.IsFacebook;
+            values[3] = obj.IsTwitter;
+
+
+            SqlDataReader DR = sqlobj.ExecuteSqlHelperDR("[Sp_Check_Customercus]", values);
             return DR;
         }
         //Check Merchant Login
@@ -740,7 +763,7 @@ namespace DAL
         public int InsertIntoMerchant_Campaigns(_MerchantCampaigns obj)
         {
             var sqlobj = DBAccess.InstanceCreation();
-            object[] values = new object[27];
+            object[] values = new object[28];
             values[0] = obj.Campaign_Id;
             values[1] = obj.Website_ID;
             values[2] = obj.Campaign_Name;
@@ -770,6 +793,7 @@ namespace DAL
             values[24] = obj.Status;
             values[25] = obj.Campaign_Title;
             values[26] = obj.Display_Type;
+            values[27] = obj.ProductURL;
             SqlDataReader dr = sqlobj.ExecuteSqlHelperDR("InsertInToMerchantCampaigns", values);
             while (dr.Read())
                 Campaigns_Id = Convert.ToInt32(dr[0]);
@@ -795,7 +819,7 @@ namespace DAL
         public void updateMerchant_Campaigns(_MerchantCampaigns obj)
         {
             var sqlobj = DBAccess.InstanceCreation();
-            object[] values = new object[11];
+            object[] values = new object[12];
             values[0] = obj.Campaign_Id;
             values[1] = obj.Campaign_Name;
             values[2] = obj.Referrer_reward_type;
@@ -807,6 +831,7 @@ namespace DAL
             values[8] = obj.Min_purchase_amt;
             values[9] = obj.Campaign_Image;
             values[10] = obj.Campaign_Title;
+            values[11] = obj.ProductURL;
             SqlDataReader dr = sqlobj.ExecuteSqlHelperDR("UpdateInToMerchantCampaigns", values);
             //while (dr.Read())
             //    Campaigns_Id = Convert.ToInt32(dr[0]);
@@ -1663,6 +1688,16 @@ namespace DAL
             SqlDataReader DR = sqlobj.ExecuteSqlHelperDR("TotalActiveCampaigns", values);
             return DR;
         }
+       
+        public SqlDataReader TotalActiveCampaignsByID(_Merchant obj)
+        {
+            var sqlobj = DBAccess.InstanceCreation();
+            object[] values = new object[2];
+            values[0] = obj.MerchantID;
+            values[1] = obj.CampaignId;
+            SqlDataReader DR = sqlobj.ExecuteSqlHelperDR("TotalActiveCampaignsID", values);
+            return DR;
+        }
         //BindTotalDeActivatedMerchant
         public int BindTotalDeActivatedMerchant(_Merchant obj)
         {
@@ -1961,9 +1996,10 @@ namespace DAL
         public SqlDataReader BindBarChartClicks(_Campaigns_Stats obj)
         {
             var sqlobj = DBAccess.InstanceCreation();
-            object[] values = new object[2];
+            object[] values = new object[3];
             values[0] = obj.Merchant_ID;
             values[1] = obj.Campaign_Id;
+            values[2] = obj.TimePeriod;
             SqlDataReader DR = sqlobj.ExecuteSqlHelperDR("BindBarChartClicks", values);
             return DR;
         }
@@ -1971,9 +2007,10 @@ namespace DAL
         public SqlDataReader BindBarChartSales(_Campaigns_Stats obj)
         {
             var sqlobj = DBAccess.InstanceCreation();
-            object[] values = new object[2];
+            object[] values = new object[3];
             values[0] = obj.Merchant_ID;
             values[1] = obj.Campaign_Id;
+            values[2] = obj.TimePeriod;
             SqlDataReader DR = sqlobj.ExecuteSqlHelperDR("BindBarChartSales", values);
             return DR;
         }
@@ -1981,9 +2018,10 @@ namespace DAL
         public SqlDataReader BindBarChartPurchase(_Campaigns_Stats obj)
         {
             var sqlobj = DBAccess.InstanceCreation();
-            object[] values = new object[2];
+            object[] values = new object[3];
             values[0] = obj.Merchant_ID;
             values[1] = obj.Campaign_Id;
+            values[2] = obj.TimePeriod;
             SqlDataReader DR = sqlobj.ExecuteSqlHelperDR("BindBarChartPurchase", values);
             return DR;
         }
@@ -2087,6 +2125,13 @@ namespace DAL
             object[] values = new object[1];
             values[0] = merchant.Merchant_ID;
             return sqlobj.ExecuteSqlHelperDR("ReferredBySomeone", values);
+        }
+        public SqlDataReader ReferringSomeone(_Merchant merchant)
+        {
+            var sqlobj = DBAccess.InstanceCreation();
+            object[] values = new object[1];
+            values[0] = merchant.Merchant_ID;
+            return sqlobj.ExecuteSqlHelperDR("ReferringSomeone", values);
         }
         public SqlDataReader MerchantForgetPassword(string EmailAddress)
         {

@@ -56,7 +56,7 @@ namespace DAL
            DR.Dispose();
            return i;
        }
-       public bool CheckEmail(_MerchantReferral obj)
+       public int CheckEmail(_MerchantReferral obj)
        {
            var sqlobj = DBAccess.InstanceCreation();
            object[] values = new object[1];
@@ -64,13 +64,10 @@ namespace DAL
            SqlDataReader DR = sqlobj.ExecuteSqlHelperDR("Sp_checkmailID", values);
            int i = 1;
            if (DR.Read())
-               i = Convert.ToInt32(DR[0]);
+               i = Convert.ToInt32(DR[0]);          
            DBAccess.InstanceCreation().disconnect();
            DR.Dispose();
-           if (i == 0)
-               return false;
-           else
-               return true;
+           return i;
        }
        public int  UpdateReferralCampin(_MerchantReferral obj)
        {

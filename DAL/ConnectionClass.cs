@@ -19,12 +19,15 @@ namespace DAL
         string strConnection = String.Empty;
         string strErr = string.Empty;
         DataSet ds;
+        
         public SqlConnection SetConnectionString()
         {
             if (HttpContext.Current.Request.IsLocal)
-                strConnection = @"Data Source=100.100.7.7; Initial Catalog=EricReferral;  User Id=sa; Password=Flexsinsa123;Max Pool Size=2000";
+                //strConnection = @"Data Source=100.100.7.7; Initial Catalog=EricReferral;  User Id=sa; Password=Flexsinsa123;Max Pool Size=2000";
+                strConnection = ConfigurationSettings.AppSettings["conStr"].ToString();
             else
-                strConnection = @"Data Source=WIN-YHA38JQ60DD\SQL2008; Initial Catalog=socialreferral;  User Id=flexsin; Password=Flex$$#456$;Max Pool Size=2000";
+                //strConnection = @"Data Source=WIN-YHA38JQ60DD\SQL2008; Initial Catalog=socialreferral;  User Id=flexsin; Password=Flex$$#456$;Max Pool Size=2000";
+                strConnection = ConfigurationSettings.AppSettings["conStr"].ToString();
             Con = new SqlConnection(strConnection);
             return Con;
         }
