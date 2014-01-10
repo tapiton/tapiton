@@ -67,6 +67,15 @@ namespace EricProject.Site {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl alltable;
         
         /// <summary>
+        /// literalschedule control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal literalschedule;
+        
+        /// <summary>
         /// redeemdiv control.
         /// </summary>
         /// <remarks>

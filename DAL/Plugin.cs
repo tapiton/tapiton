@@ -1387,6 +1387,15 @@ namespace DAL
             return DR;
         }
 
+        public SqlDataReader Bind_RedeemCredits(Redeem_Schedule obj)
+        {
+            var sqlobj = DBAccess.InstanceCreation();
+            object[] values = new object[1];
+            values[0] = obj.Redeem_Plan_ID;
+            SqlDataReader DR = sqlobj.ExecuteSqlHelperDR("Bind_RedeemCredits", values);
+            return DR;
+        }
+
         public SqlDataReader CheckStatus(_TransactionDetails obj)
         {
             var sqlobj = DBAccess.InstanceCreation();

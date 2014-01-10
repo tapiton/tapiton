@@ -66,7 +66,29 @@ namespace EricProject.Site
                 {
                     redeemdiv.Visible = false;
                 }
+                bindliteralschedule();
             }
+        }
+        public void bindliteralschedule()
+        {
+            literalschedule.Text = "";
+            literalschedule.Text += " <ul class=\"blubg\">";
+            Redeem_Schedule obj = new Redeem_Schedule();
+            obj.Redeem_Plan_ID = 0;
+            DAL.Plugin sqlobj = new DAL.Plugin();
+            SqlDataReader dr = sqlobj.Bind_RedeemCredits(obj);
+            while (dr.Read())
+            {         
+                if (UnredeemedCredits >=Convert.ToInt32( dr["Received_Credits"].ToString()))  
+                {
+                    literalschedule.Text += " <li style=\"cursor: pointer;\" onclick=\"RedeemCredits(" + dr["Received_Credits"] + "," + dr["Payment_Amount"] + ")\"><span><span class=\"rt\">" + dr["Received_Credits"] + "<label>Credits</label></span></span>  <label class=\"grn\">$" +Convert.ToDecimal(dr["Payment_Amount"])+ "</label></li>";
+                }                         
+                else                           
+                {
+                    literalschedule.Text += " <li style=\"cursor: pointer;\" onclick=\"alert('You must have atleast " + dr["Received_Credits"] + " credits to redeem.')\"><span><span class=\"rt\">" + dr["Received_Credits"] + "<label>Credits</label></span></span><label class=\"grn\">$" + Convert.ToDecimal(dr["Payment_Amount"]) + "</label></li>";                          
+                }
+            }
+            literalschedule.Text += " </ul>";
         }
         public void All()
         {
@@ -92,7 +114,7 @@ namespace EricProject.Site
                         strall.Append("<td class='first'><a href=\"javascript:void();\" onclick=\"RedirectCustomerReferenceIdRedeem(" + dr["Credit_Transaction_ID"].ToString() + "," + Session["CustomerID"].ToString() + ")\">" + dr["AddedOn"].ToString() + "</a></td>");
                     else if (dr["Type"].ToString().Contains("Merchant Referral"))
                     {
-                        strall.Append("<td class='first' style='color:#085baf;'>"+dr["AddedOn"].ToString()+"</td>");
+                        strall.Append("<td class='first' style='color:#085baf;'>" + dr["AddedOn"].ToString() + "</td>");
                     }
                     else
                         strall.Append("<td class='first'><a href=\"javascript:void();\" onclick=\"RedirectCustomerReferenceId(" + dr["Customer_Reference_Id"].ToString() + "," + Session["CustomerID"].ToString() + ")\">" + dr["AddedOn"].ToString() + "</a></td>");

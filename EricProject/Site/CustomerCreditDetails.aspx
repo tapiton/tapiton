@@ -95,58 +95,7 @@
                                             <div class="clr"></div>
                                         </div>
                                         <div class="shedulebox">
-                                            <ul class="blubg">
-                                                <% if (UnredeemedCredits >= 500)
-                                                   { %>
-                                                <li style="cursor: pointer;" onclick="RedeemCredits(500,5)"><span><span class="rt">500<label>Credits</label></span></span>
-                                                    <label class="grn">$5.00</label></li>
-                                                <%}
-                                                   else
-                                                   { %>
-                                                <li style="cursor: pointer;" onclick="alert('You must have atleast 500 credits to redeem.')"><span><span class="rt">500<label>Credits</label></span></span>
-                                                    <label class="grn">$5.00</label></li>
-                                                <%} %>
-                                                <% if (UnredeemedCredits >= 1000)
-                                                   { %>
-                                                <li style="cursor: pointer;" onclick="RedeemCredits(1000,10)"><span><span class="rt">1,000<label>Credits</label></span></span>
-                                                    <label class="grn">$10.00</label></li>
-                                                <%}
-                                                   else
-                                                   { %>
-                                                <li style="cursor: pointer;" onclick="alert('You must have atleast 1,000 credits to redeem.')"><span><span class="rt">1,000<label>Credits</label></span></span>
-                                                    <label class="grn">$10.00</label></li>
-                                                <%} %>
-                                                <% if (UnredeemedCredits >= 5000)
-                                                   { %>
-                                                <li style="cursor: pointer;" onclick="RedeemCredits(5000,50)"><span><span class="rt">5,000<label>Credits</label></span></span>
-                                                    <label class="grn">$50.00</label></li>
-                                                <%}
-                                                   else
-                                                   { %>
-                                                <li style="cursor: pointer;" onclick="alert('You must have atleast 5,000 credits to redeem.')"><span><span class="rt">5,000<label>Credits</label></span></span>
-                                                    <label class="grn">$50.00</label></li>
-                                                <%} %>
-                                                <% if (UnredeemedCredits >= 10000)
-                                                   { %>
-                                                <li style="cursor: pointer;" onclick="RedeemCredits(10000,100)"><span><span class="rt">10,000<label>Credits</label></span></span>
-                                                    <label class="grn">$100.00</label></li>
-                                                <%}
-                                                   else
-                                                   { %>
-                                                <li style="cursor: pointer;" onclick="alert('You must have atleast 10,000 credits to redeem.')"><span><span class="rt">10,000<label>Credits</label></span></span>
-                                                    <label class="grn">$100.00</label></li>
-                                                <%} %>
-                                                <% if (UnredeemedCredits >= 50000)
-                                                   { %>
-                                                <li style="cursor: pointer;" onclick="RedeemCredits(50000,500)"><span><span class="rt">50,000<label>Credits</label></span></span>
-                                                    <label class="grn">$500.00</label></li>
-                                                <%}
-                                                   else
-                                                   { %>
-                                                <li style="cursor: pointer;" onclick="alert('You must have atleast 50,000 credits to redeem.')"><span><span class="rt">50,000<label>Credits</label></span></span>
-                                                    <label class="grn">$500.00</label></li>
-                                                <%} %>
-                                            </ul>
+                                          <asp:Literal runat="server" ID="literalschedule"></asp:Literal>
                                             <div class="clr"></div>
                                         </div>
                                         <div class="shedulebox" id="redeemdiv" runat="server" visible="false">

@@ -358,7 +358,12 @@ namespace BAL
         public int Status { get; set; }
     }
 
-
+    public class Redeem_Schedule
+    {
+        public int Redeem_Plan_ID { get; set; }
+        public decimal Payment_Amount { get; set; }
+        public int Received_Credits { get; set; }
+    }
     public class _Merchant_website_detail
     {
         public int Merchant_ID { get; set; }
