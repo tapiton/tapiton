@@ -8,6 +8,7 @@ using System.Configuration;
 using System.Data;
 using System.Web;
 using Microsoft.ApplicationBlocks.Data;
+using System.Web.Configuration;
 
 namespace DAL
 {
@@ -19,7 +20,7 @@ namespace DAL
         string strConnection = String.Empty;
         string strErr = string.Empty;
         DataSet ds;
-        
+
         public SqlConnection SetConnectionString()
         {
             if (HttpContext.Current.Request.IsLocal)
@@ -43,52 +44,110 @@ namespace DAL
         }
         public void Connect()
         {
-            if (Con.State == ConnectionState.Closed)
-                Con.Open();
+            try
+            {
+                if (Con.State == ConnectionState.Closed)
+                    Con.Open();
+            }
+            catch (Exception)
+            {
+                HttpContext.Current.Response.Redirect(WebConfigurationManager.AppSettings["pageURL"].ToString() + "Site/SMTP_ErrorHandling.aspx");
+            }
         }
         public DataSet FillDataSet(string txt)
         {
-            com = new SqlCommand(txt, SetConnectionString());
-            Connect();
-            adp = new SqlDataAdapter(com);
-            ds = new DataSet();
-            adp.Fill(ds);
-            disconnect();
-            Con.Close();
+            try
+            {
+                com = new SqlCommand(txt, SetConnectionString());
+                Connect();
+                adp = new SqlDataAdapter(com);
+                ds = new DataSet();
+                adp.Fill(ds);
+                disconnect();
+                Con.Close();
+                
+            }
+            catch (Exception)
+            {
+                HttpContext.Current.Response.Redirect(WebConfigurationManager.AppSettings["pageURL"].ToString() + "Site/SMTP_ErrorHandling.aspx");
+            }
             return ds;
         }
         public int ExecuteSqlHelper(string spName, object[] values)
         {
-            int i = SqlHelper.ExecuteNonQuery(getConnection(), spName, values);
-            disconnect();
-            Con.Close();
+            int i = 0;
+            try
+            {
+                i = SqlHelper.ExecuteNonQuery(getConnection(), spName, values);
+                disconnect();
+                Con.Close();
+
+            }
+            catch (Exception)
+            {
+                HttpContext.Current.Response.Redirect(WebConfigurationManager.AppSettings["pageURL"].ToString() + "Site/SMTP_ErrorHandling.aspx");
+            }
             return (i);
         }
         public DataSet ExeSqlHelper(string spName, object[] values)
         {
-            DataSet ds = SqlHelper.ExecuteDataset(getConnection(), spName, values);
-            disconnect();
-            Con.Close();
+            DataSet ds = new DataSet();
+            try
+            {
+                ds = SqlHelper.ExecuteDataset(getConnection(), spName, values);
+                disconnect();
+                Con.Close();
+
+            }
+            catch (Exception)
+            {
+                HttpContext.Current.Response.Redirect(WebConfigurationManager.AppSettings["pageURL"].ToString() + "Site/SMTP_ErrorHandling.aspx");
+            }
             return (ds);
         }
         public DataSet ExeSqlHelper(string spName)
         {
-            DataSet ds = SqlHelper.ExecuteDataset(getConnection(), CommandType.StoredProcedure, spName);
-            disconnect();
-            Con.Close();
+            DataSet ds = new DataSet();
+            try
+            {
+                ds = SqlHelper.ExecuteDataset(getConnection(), CommandType.StoredProcedure, spName);
+                disconnect();
+                Con.Close();
+
+            }
+            catch (Exception)
+            {
+                HttpContext.Current.Response.Redirect(WebConfigurationManager.AppSettings["pageURL"].ToString() + "Site/SMTP_ErrorHandling.aspx");
+            }
             return (ds);
         }
 
         public SqlDataReader ExecuteSqlHelperDR(string spName)
         {
-            SqlDataReader DR = SqlHelper.ExecuteReader(getConnection(), CommandType.StoredProcedure, spName);
+            SqlDataReader DR = null;
+            try
+            {
+                DR = SqlHelper.ExecuteReader(getConnection(), CommandType.StoredProcedure, spName);
+            }
             //disconnect();
             //Con.Close();
+            catch (Exception)
+            {
+                HttpContext.Current.Response.Redirect(WebConfigurationManager.AppSettings["pageURL"].ToString() + "Site/SMTP_ErrorHandling.aspx");
+            }
             return (DR);
         }
         public SqlDataReader ExecuteSqlHelperDR(string spName, object[] values)
         {
-            SqlDataReader DR = SqlHelper.ExecuteReader(getConnection(), spName, values);
+            SqlDataReader DR = null;
+            try
+            {
+                DR = SqlHelper.ExecuteReader(getConnection(), spName, values);
+            }
+            catch (Exception)
+            {
+                HttpContext.Current.Response.Redirect(WebConfigurationManager.AppSettings["pageURL"].ToString() + "ServiceNotAvailable.html");
+            }
             //disconnect();
             //Con.Close();
             return (DR);

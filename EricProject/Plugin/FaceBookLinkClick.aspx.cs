@@ -114,12 +114,12 @@ namespace EricProject.Plugin
                     else
                     {
 
-                        if (url == "" && source == "T" && !CurrentURl.Contains("dev.tapiton.com"))
+                        if (url == "" && source == "T" && !CurrentURl.Contains("tapiton.com"))
                         {
                         }
                         else
                         {
-                            if (url == "" && source == "F" && !CurrentURl.Contains("dev.tapiton.com"))
+                            if (url == "" && source == "F" && !CurrentURl.Contains("tapiton.com"))
                             {
                             }
                             else

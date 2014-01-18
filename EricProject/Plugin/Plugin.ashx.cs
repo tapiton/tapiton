@@ -37,7 +37,8 @@ namespace EricProject.Plugin
         Decimal G_MaximumCreadits_C = 0.0M, G_Price_C = 0.0M;
         string PublicKey = "";
         public string URL = ConfigurationManager.AppSettings["pageURL"].ToString() + "Plugin/Share/O/";
-        public string strShortURL = "";
+        public string URL_E = ConfigurationManager.AppSettings["pageURL"].ToString() + "Plugin/Share/E/";
+        public string strShortURL = "", strShortURLEmail="";
         int TotalAvailableCreditPurchase, thresholdAmount, WebsiteIDForTransaction;
         string PlanAmont;
         long PlanCredit;
@@ -129,7 +130,10 @@ namespace EricProject.Plugin
                         }
                         Save_Product_Details(routeValues);
                         if (Creditsbelowzero == 1)
-                            couponShow1Hour();                      
+                        {
+                            couponShow1Hour();
+                            updateReferrerURL();
+                        }
                         else
                         {
                             if (CookieID > 0)
@@ -1006,6 +1010,7 @@ namespace EricProject.Plugin
         public void couponShow()
         {
             strShortURL = ShortURL(URL + offerID);
+            strShortURLEmail = ShortURL(URL_E + offerID);
             HttpContext.Current.Response.ContentType = "text/javascript";
             SubTotal = SubTotal.Replace('$', ' ');
             //Display Message in Coupon in 3D cart
@@ -1149,8 +1154,8 @@ namespace EricProject.Plugin
                 PluginCoupon_R = PluginCoupon_R.Replace("{MessageForReward}", "Invite your friends and get " + ReferrerReward.ToString() + " back when they make a purchase.");
             else
                 PluginCoupon_R = PluginCoupon_R.Replace("{MessageForReward}", "Invite your friends and they’ll get  " + CustomerReward.ToString() + "  off.If they buy anything, you’ll Get " + ReferrerReward.ToString() + " back");
-            PluginCoupon_R = PluginCoupon_R.Replace("{clickurl}", "Click on the link below to get " + CustomerReward.ToString() + "off your purchase:<br/><a href=" + strShortURL + ">" + strShortURL + "</a>");
-            PluginCoupon_R = PluginCoupon_R.Replace("{clickurlshare}", "Click on the link below to get " + CustomerReward.ToString() + "off your purchase:<br/>" + strShortURL + "");
+            PluginCoupon_R = PluginCoupon_R.Replace("{clickurl}", "Click on the link below to get " + CustomerReward.ToString() + "off your purchase:<br/><a href=" + strShortURLEmail + ">" + strShortURLEmail + "</a>");
+            PluginCoupon_R = PluginCoupon_R.Replace("{clickurlshare}", "Click on the link below to get " + CustomerReward.ToString() + "off your purchase:<br/>" + strShortURLEmail + "");
 
             if (CampaignDetails.Referrer_reward_type == 1)
             {
@@ -1297,7 +1302,7 @@ namespace EricProject.Plugin
         }
         public void AddtransactionDetails(int CustomerID, int ReferralID, int WebsiteID_Add, int CampaignID, string OrderID, int Quantity, string SKUID, string TotalAmount, string Subtotal, string Discount, string Tax, string Tax2, string Tax3, string Shipping, int referred_transaction_id)
         {
-
+            decimal value;
             _TransactionDetails obj = new _TransactionDetails();
             obj.Transaction_ID = 0;
             obj.Customer_ID = CustomerID;
@@ -1310,9 +1315,18 @@ namespace EricProject.Plugin
             obj.TotalAmount = TotalAmount;
             obj.SubTotal = Subtotal;
             obj.Discount = Discount;
-            obj.Tax = Tax;
+            if (Decimal.TryParse(Tax, out value))
+                obj.Tax = Tax;
+            else
+                obj.Tax = "0";
+            if (Decimal.TryParse(Tax2, out value))
             obj.Tax2 = Tax2;
+            else
+                obj.Tax2 = "0";
+            if (Decimal.TryParse(Tax3, out value))
             obj.Tax3 = Tax3;
+            else
+                obj.Tax3 = "0";
             obj.Shipping = Shipping;
             obj.referred_transaction_id = referred_transaction_id;
             DAL.Plugin sqlobj = new DAL.Plugin();

@@ -38,39 +38,57 @@ public partial class Site_Index : System.Web.UI.Page
             }
             SqlDataReader drPluginPost = sqlPlugin.BindLatestTop3PostByCustomer(objCampaignsDetails);
             LatestTop3PostByCustomer.Text = "";
-            while (drPluginPost.Read())
-            {
-                if (drPluginPost["Post_Location"].ToString() == "1")
+          
+                while (drPluginPost.Read())
                 {
-                    LatestTop3PostByCustomer.Text += "<li>";
-                    LatestTop3PostByCustomer.Text += "<div class=\"img\">";
-                    LatestTop3PostByCustomer.Text += "<a href=\"https://www.facebook.com/" + drPluginPost["FacebookId"].ToString() + "\" target=\"_blank\"><img src=\"https://graph.facebook.com/" + drPluginPost["FacebookId"].ToString() + "/picture\" alt=\"" + " " + drPluginPost["Name"].ToString() + "\" title=\"" + drPluginPost["Name"].ToString() + "\"/></a>";
-                    LatestTop3PostByCustomer.Text += "</div>";
-                    LatestTop3PostByCustomer.Text += "<div class=\"text\">";
-                    if(drPluginPost["DefaultFaceBook_ShareText"].ToString().Length>170)
-                    LatestTop3PostByCustomer.Text += "<p><a href=\"https://www.facebook.com/" + drPluginPost["FacebookId"].ToString() + "\" target=\"_blank\">" + drPluginPost["Name"].ToString() + "</a>  " + drPluginPost["DefaultFaceBook_ShareText"].ToString().Substring(0,170) + "...</p>";
-                    else
-                    LatestTop3PostByCustomer.Text += "<p><a href=\"https://www.facebook.com/" + drPluginPost["FacebookId"].ToString() + "\" target=\"_blank\">" + drPluginPost["Name"].ToString() + "</a>  " + drPluginPost["DefaultFaceBook_ShareText"].ToString() + "</p>";
-                    LatestTop3PostByCustomer.Text += "<span>" + drPluginPost["TimeAgo"].ToString() + "</span>";
-                    LatestTop3PostByCustomer.Text += "</div>";
-                    LatestTop3PostByCustomer.Text += "</li>";
+                    if (drPluginPost["Post_Location"].ToString() == "1")
+                    {
+                        LatestTop3PostByCustomer.Text += "<li>";
+                        LatestTop3PostByCustomer.Text += "<div class=\"img\">";
+                        LatestTop3PostByCustomer.Text += "<a href=\"https://www.facebook.com/" + drPluginPost["FacebookId"].ToString() + "\" target=\"_blank\"><img src=\"https://graph.facebook.com/" + drPluginPost["FacebookId"].ToString() + "/picture\" alt=\"" + " " + drPluginPost["Name"].ToString() + "\" title=\"" + drPluginPost["Name"].ToString() + "\"/></a>";
+                        LatestTop3PostByCustomer.Text += "</div>";
+                        LatestTop3PostByCustomer.Text += "<div class=\"text\">";
+                        if (drPluginPost["DefaultFaceBook_ShareText"].ToString().Length > 170)
+                            LatestTop3PostByCustomer.Text += "<p><a href=\"https://www.facebook.com/" + drPluginPost["FacebookId"].ToString() + "\" target=\"_blank\">" + drPluginPost["Name"].ToString() + "</a>  " + drPluginPost["DefaultFaceBook_ShareText"].ToString().Substring(0, 170) + "...</p>";
+                        else
+                            LatestTop3PostByCustomer.Text += "<p><a href=\"https://www.facebook.com/" + drPluginPost["FacebookId"].ToString() + "\" target=\"_blank\">" + drPluginPost["Name"].ToString() + "</a>  " + drPluginPost["DefaultFaceBook_ShareText"].ToString() + "</p>";
+                        LatestTop3PostByCustomer.Text += "<span>" + drPluginPost["TimeAgo"].ToString() + "</span>";
+                        LatestTop3PostByCustomer.Text += "</div>";
+                        LatestTop3PostByCustomer.Text += "</li>";
+                    }
+                    if (drPluginPost["Post_Location"].ToString() == "2")
+                    {
+                        LatestTop3PostByCustomer.Text += "<li>";
+                        LatestTop3PostByCustomer.Text += "<div class=\"img\">";
+                        LatestTop3PostByCustomer.Text += "<a href=\"https://twitter.com/" + drPluginPost["TwitterUserName"].ToString() + "\" target=\"_blank\"><img src=\"https://abs.twimg.com/sticky/default_profile_images/default_profile_6_normal.png\" alt=\"" + " " + drPluginPost["Name"].ToString() + "\" title=\"" + drPluginPost["Name"].ToString() + "\"/></a>";
+                        LatestTop3PostByCustomer.Text += "</div>";
+                        LatestTop3PostByCustomer.Text += "<div class=\"text\">";
+                        LatestTop3PostByCustomer.Text += "<p><a href=\"https://twitter.com/" + drPluginPost["TwitterUserName"].ToString() + "\" target=\"_blank\">" + drPluginPost["Name"].ToString() + "</a>  " + drPluginPost["DefaultFaceBook_ShareText"].ToString() + "</p>";
+                        LatestTop3PostByCustomer.Text += "<span>" + drPluginPost["TimeAgo"].ToString() + "</span>";
+                        LatestTop3PostByCustomer.Text += "</div>";
+                        LatestTop3PostByCustomer.Text += "</li>";
+                    }
                 }
-                if (drPluginPost["Post_Location"].ToString() == "2")
-                {
-                    LatestTop3PostByCustomer.Text += "<li>";
-                    LatestTop3PostByCustomer.Text += "<div class=\"img\">";
-                    LatestTop3PostByCustomer.Text += "<a href=\"https://twitter.com/" + drPluginPost["TwitterUserName"].ToString() + "\" target=\"_blank\"><img src=\"https://abs.twimg.com/sticky/default_profile_images/default_profile_6_normal.png\" alt=\"" + " " + drPluginPost["Name"].ToString() + "\" title=\"" + drPluginPost["Name"].ToString() + "\"/></a>";
-                    LatestTop3PostByCustomer.Text += "</div>";
-                    LatestTop3PostByCustomer.Text += "<div class=\"text\">";
-                    LatestTop3PostByCustomer.Text += "<p><a href=\"https://twitter.com/" + drPluginPost["TwitterUserName"].ToString() + "\" target=\"_blank\">" + drPluginPost["Name"].ToString() + "</a>  " + drPluginPost["DefaultFaceBook_ShareText"].ToString() + "</p>";
-                    LatestTop3PostByCustomer.Text += "<span>" + drPluginPost["TimeAgo"].ToString() + "</span>";
-                    LatestTop3PostByCustomer.Text += "</div>";
-                    LatestTop3PostByCustomer.Text += "</li>";
-                }
-            }
+           
             if (!drPluginPost.HasRows)
             {
-                LatestTop3PostByCustomer.Text += "<span style=\"color:#ffffff\">No Post Available</span>";
+                SqlDataReader drPluginPostTemp = sqlPlugin.BindLatestTop3Posttemp();
+                while (drPluginPostTemp.Read())
+                {
+                    LatestTop3PostByCustomer.Text += "<li>";
+                    LatestTop3PostByCustomer.Text += "<div class=\"img\">";
+                    LatestTop3PostByCustomer.Text += "<a href=\"#\" ><img src="+ConfigurationManager.AppSettings["pageURL"].ToString() + "images/MerchantImage/"+drPluginPostTemp["Image"]+"></a>";
+                    LatestTop3PostByCustomer.Text += "</div>";
+                    LatestTop3PostByCustomer.Text += "<div class=\"text\">";
+                    LatestTop3PostByCustomer.Text += "<p>"+ drPluginPostTemp["Text"].ToString() + "</p>";
+                   // LatestTop3PostByCustomer.Text += "<span>" + drPluginPost["TimeAgo"].ToString() + "</span>";
+                    LatestTop3PostByCustomer.Text += "</div>";
+                    LatestTop3PostByCustomer.Text += "</li>";
+                }
+                if (!drPluginPostTemp.HasRows)
+                {
+                    LatestTop3PostByCustomer.Text += "<span style=\"color:#ffffff\">No Post Available</span>";
+                }
             }
             //Bind LatestTop3PostByCustomer
             DBAccess.InstanceCreation().disconnect();

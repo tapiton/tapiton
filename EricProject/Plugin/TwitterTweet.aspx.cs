@@ -11,6 +11,7 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Net;
 using System.IO;
+using Twitterizer;
 
 
 public partial class Plugin_TwitterTweet : System.Web.UI.Page
@@ -384,7 +385,7 @@ public partial class Plugin_TwitterTweet : System.Web.UI.Page
                         //// end of insert
 
                         //string callbackUrl = ConfigurationManager.AppSettings["pageURL"] + "Plugin/TwitterTweet.aspx";
-                        string callbackUrl = ConfigurationManager.AppSettings["pageURL"] + "Plugin/TwShare/"+Session["OfferID"];
+                        string callbackUrl = ConfigurationManager.AppSettings["pageURL"].ToString()+"Plugin/TwShare/"+Session["OfferID"];
                         string requestToken = twitterobj.GetRequestToken(consumerKey, consumerSecret, callbackUrl);
 
                         Uri authenticationUri = twitterobj.BuildAuthorizationUri(requestToken);
@@ -445,7 +446,7 @@ public partial class Plugin_TwitterTweet : System.Web.UI.Page
                     //Response.Write("9");
 
                     //string callbackUrl = ConfigurationManager.AppSettings["pageURL"] + "Plugin/TwitterTweet.aspx";
-                    string callbackUrl = ConfigurationManager.AppSettings["pageURL"] + "Plugin/TwShare/" + Session["OfferID"];
+                    string callbackUrl =  ConfigurationManager.AppSettings["pageURL"].ToString()+"Plugin/TwShare/" + Session["OfferID"];
                     string requestToken = twitterobj.GetRequestToken(consumerKey, consumerSecret, callbackUrl);
 
                     Uri authenticationUri = twitterobj.BuildAuthorizationUri(requestToken);

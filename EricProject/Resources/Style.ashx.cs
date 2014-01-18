@@ -35,8 +35,8 @@ namespace EricProject.Resources
 .cuponBox .loginField {padding-bottom: 10px;}
 .cuponBox .loginField .field { padding: 0 10px; background: url('..images/Coupon/field_bg.png') repeat-x scroll 0 0 transparent; border:1px solid #CDD1DB; height:28px; width:251px;}		
 .cuponBox .loginField textarea { padding: 5px 10px; background: url('..images/Coupon/field_bg.png') repeat-x scroll 0 0 transparent; font-family:Arial, Helvetica, sans-serif; font-size:1em; border:1px solid #CDD1DB; height:50px; width:351px;}
-.cuponBox .loginField .button { cursor:pointer; width:88px; height:37px; color:#ffffff; font-weight:bold; float:left; border:0px; background: url('http://dev.tapiton.com/images/Coupon/button_bg.png') repeat-x scroll 0 0 transparent; }
-.cuponBox .loginField .button:hover { background: url('http://dev.tapiton.com/images/Coupon/button_bg_hover.png') repeat-x scroll 0 0 transparent;  }
+.cuponBox .loginField .button { cursor:pointer; width:88px; height:37px; color:#ffffff; font-weight:bold; float:left; border:0px; background: url('http://tapiton.com/images/Coupon/button_bg.png') repeat-x scroll 0 0 transparent; }
+.cuponBox .loginField .button:hover { background: url('http://tapiton.com/images/Coupon/button_bg_hover.png') repeat-x scroll 0 0 transparent;  }
 .cuponBox .loginField a { line-height: 37px; float: right; font-family: Arial; color: #000000; font-size: 14px; text-decoration: none; padding-right: 28px;}}
 
 .cuponBox .parentTabel { height: 100%; position: relative; border: 10px solid #f4f4f4}
@@ -85,8 +85,8 @@ namespace EricProject.Resources
 .cuponBox .loginField {padding-bottom: 10px;}
 .cuponBox .loginField .field { padding: 0 10px; background: url('..images/Coupon/field_bg.png') repeat-x scroll 0 0 transparent; border:1px solid #CDD1DB; height:28px; width:251px;}		
 .cuponBox .loginField textarea { padding: 5px 10px; background: url('..images/Coupon/field_bg.png') repeat-x scroll 0 0 transparent; font-family:Arial, Helvetica, sans-serif; font-size:1em; border:1px solid #CDD1DB; height:50px; width:351px;}
-.cuponBox .loginField .button { cursor:pointer; width:88px; height:37px; color:#ffffff; font-weight:bold; float:left; border:0px; background: url('http://dev.tapiton.com/images/Coupon/button_bg.png') repeat-x scroll 0 0 transparent; }
-.cuponBox .loginField .button:hover { background: url('http://dev.tapiton.com/images/Coupon/button_bg_hover.png') repeat-x scroll 0 0 transparent;  }
+.cuponBox .loginField .button { cursor:pointer; width:88px; height:37px; color:#ffffff; font-weight:bold; float:left; border:0px; background: url('http://tapiton.com/images/Coupon/button_bg.png') repeat-x scroll 0 0 transparent; }
+.cuponBox .loginField .button:hover { background: url('http://tapiton.com/images/Coupon/button_bg_hover.png') repeat-x scroll 0 0 transparent;  }
 .cuponBox .loginField a { line-height: 37px; float: right; font-family: Arial; color: #000000; font-size: 14px; text-decoration: none; padding-right: 28px;}}
 
 .cuponBox .parentTabel { height: 100%; position: relative; border: 10px solid #f4f4f4}

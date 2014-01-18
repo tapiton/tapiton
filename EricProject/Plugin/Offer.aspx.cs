@@ -32,8 +32,9 @@ namespace EricProject.Plugin
         public string Expiry_date;
         public string company_name, Customerfromemailid, CustomerReward;
         public int OfferID;
-        public string strShortURL = "";
+        public string strShortURL = "", strShortURL_E="";
         public string URL = ConfigurationManager.AppSettings["pageURL"].ToString() + "Plugin/Share/O/";
+        public string URL_E = ConfigurationManager.AppSettings["pageURL"].ToString() + "Plugin/Share/E/";
         public string pageURL = ConfigurationManager.AppSettings["pageURL"].ToString();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -51,6 +52,7 @@ namespace EricProject.Plugin
                 {
                     FromEmailID.Value = CampaignDR["Email_ID"].ToString();
                     strShortURL = ShortURL(URL + OfferID);
+                    strShortURL_E = ShortURL(URL_E + OfferID);
                     CopyToClip = strShortURL;
                     company_name = ConfigurationManager.AppSettings["company_name"].ToString();
                     Backcolor = CampaignDR["BorderColor"].ToString();
@@ -142,7 +144,7 @@ namespace EricProject.Plugin
                         CustomerReward = CampaignDR["Customer_reward"] + "%";
                     }
                     //  //GetOfferIDFromUrl                 
-                    clickurl.Value = "Click on the link below to get " + CustomerReward.ToString() + "off your purchase:<br/><a href=" + strShortURL + ">" + strShortURL + "</a>";
+                    clickurl.Value = "Click on the link below to get " + CustomerReward.ToString() + "off your purchase:<br/><a href=" + strShortURL_E + ">" + strShortURL_E + "</a>";
                 
                     if (Convert.ToInt32(CampaignDR["Referrer_reward_type"].ToString()) == 1)
                     {

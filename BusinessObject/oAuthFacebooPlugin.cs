@@ -19,8 +19,8 @@ using System.Web.Configuration;
 public class oAuthFacebookPlugin
 {
     public static string pageURL1 = WebConfigurationManager.AppSettings["pageURL"];
-    public static string APIKey = "626662620713884";
-    public static string Secret = "ef03bac3224fae1b09cf4d2f3ae009c5";
+    public static string APIKey = "366820150082545";
+    public static string Secret = "9e4779f3bbe2714232b77f0e3e8713b3";
 
     //public static string pageURL1 = "http://localhost:2180/EricProject/";
     //public static string APIKey = "362001227199877";

@@ -26,8 +26,9 @@ namespace EricProject.Site
         string CampaignId1 = string.Empty;
         string CampaignId2 = string.Empty;
         public string OfferID = "";
-        public string strShortURL = ""; string CustomerReward = "";
+        public string strShortURL = "", strShortURL_E=""; string CustomerReward = "";
         public string URL = ConfigurationManager.AppSettings["pageURL"].ToString() + "Plugin/Share/O/";
+        public string URL_E = ConfigurationManager.AppSettings["pageURL"].ToString() + "Plugin/Share/E/";
         public string pageURL = ConfigurationManager.AppSettings["pageURL"].ToString();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -109,7 +110,8 @@ namespace EricProject.Site
                 objoffer.Referral_Url = droffer["Referral_Url"].ToString();
                 string OfferID = sqlobj.GetOfferIDFromUrl(objoffer);
                 strShortURL = ShortURL(URL + OfferID);
-                clickurl.Value = "Click on the link below to get " + CustomerReward.ToString() + "off your purchase:<br/><a href=" + strShortURL + ">" + strShortURL + "</a>";
+                strShortURL_E = ShortURL(URL_E + OfferID);
+                clickurl.Value = "Click on the link below to get " + CustomerReward.ToString() + "off your purchase:<br/><a href=" + strShortURL_E + ">" + strShortURL_E + "</a>";
                 txtReferralUrl.Value = ShortURL(ConfigurationManager.AppSettings["pageURL"] + "Plugin/Share/o/" + OfferID);
                 txtReferralUrlGrey.Value = ShortURL(ConfigurationManager.AppSettings["pageURL"] + "Plugin/Share/o/" + OfferID);
                 hiddenReferralUrl.Value = ShortURL(ConfigurationManager.AppSettings["pageURL"] + "Plugin/Share/o/" + OfferID);

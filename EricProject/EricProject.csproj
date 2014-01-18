@@ -49,24 +49,24 @@
   <ItemGroup>
     <Reference Include="CKEditor.NET, Version=3.6.2.0, Culture=neutral, PublicKeyToken=e379cdf2f8354999, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\EricProject\bin\bin\CKEditor.NET.dll</HintPath>
+      <HintPath>..\..\..\..\EricProjectTAPITON\EricProjectTAPITON\EricProject\bin\CKEditor.NET.dll</HintPath>
     </Reference>
     <Reference Include="Encryption64">
-      <HintPath>C:\Users\Dotnet113\Desktop\bin\Encryption64.dll</HintPath>
+      <HintPath>..\..\..\..\EricProjectTAPITON\EricProjectTAPITON\EricProject\bin\Encryption64.dll</HintPath>
     </Reference>
     <Reference Include="Facebook, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\EricProject\bin\bin\Facebook.dll</HintPath>
+      <HintPath>..\..\..\..\EricProjectTAPITON\EricProjectTAPITON\EricProject\bin\Facebook.dll</HintPath>
     </Reference>
     <Reference Include="Facebook.Web, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\EricProject\bin\bin\Facebook.Web.dll</HintPath>
+      <HintPath>..\..\..\..\EricProjectTAPITON\EricProjectTAPITON\EricProject\bin\Facebook.Web.dll</HintPath>
     </Reference>
     <Reference Include="Ionic.Zip">
-      <HintPath>C:\Users\Dotnet113\Desktop\bin\Ionic.Zip.dll</HintPath>
+      <HintPath>..\..\..\..\EricProjectTAPITON\EricProjectTAPITON\EricProject\bin\Ionic.Zip.dll</HintPath>
     </Reference>
     <Reference Include="itextsharp">
-      <HintPath>C:\Users\Dotnet113\Desktop\bin\itextsharp.dll</HintPath>
+      <HintPath>..\..\..\..\EricProjectTAPITON\EricProjectTAPITON\EricProject\bin\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ApplicationBlocks.Data, Version=1.0.3440.25211, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -75,7 +75,7 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Newtonsoft.Json.dll</HintPath>
+      <HintPath>C:\Users\Dotnet113\Desktop\Bin\Bin\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -101,7 +101,7 @@
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="Twitterizer2, Version=2.4.2.24877, Culture=neutral, PublicKeyToken=69d1469eac671567, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Twitterizer2.dll</HintPath>
+      <HintPath>C:\Users\Dotnet113\Desktop\Bin\Bin\Twitterizer2.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -2273,6 +2273,7 @@
     <Content Include="images\MerchantImage\NoCouponImage.gif" />
     <Content Include="images\MerchantImage\NoImage.jpg" />
     <Content Include="images\MerchantImage\NoImage.png" />
+    <Content Include="images\MerchantImage\Post.png" />
     <Content Include="images\merchant_credit.jpg" />
     <Content Include="images\merchant_credit_bot.jpg" />
     <Content Include="images\merchant_credit_top.jpg" />
@@ -3301,6 +3302,7 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </Content>
+    <Content Include="ServiceNotAvailable.html" />
     <Content Include="Site\AboutUs.aspx" />
     <Content Include="Site\Account_Details.aspx" />
     <Content Include="Site\AddCredit.aspx" />
@@ -4384,9 +4386,7 @@
     <None Include="images\Thumbs.db" />
     <None Include="images\ui\Thumbs.db" />
     <None Include="images\wysiwyg\Thumbs.db" />
-    <Content Include="Master\AdminMaster.Master" />
     <Content Include="Plugin\Plugin.ashx" />
-    <Content Include="Master\SiteMaster.Master" />
     <None Include="includes\css\FeaturesCss\helveticaneueltstd-mdcn-webfont.eot" />
     <None Include="includes\css\FeaturesCss\helveticaneueltstd-mdcn-webfont.svg" />
     <None Include="includes\css\FeaturesCss\helveticaneueltstd-mdcn-webfont.ttf" />
@@ -4398,11 +4398,8 @@
     <Content Include="Resources\Style.ashx" />
     <Content Include="Plugin\SendMail.ashx" />
     <Content Include="Site\FAQHandler.ashx" />
-    <Content Include="Master\SiteSignUpMaster.Master" />
     <Content Include="Site\PopupToDeactiveAccount.ashx" />
     <Content Include="Site\PopupCampaign.ashx" />
-    <Content Include="Master\SiteCustomer.Master" />
-    <Content Include="Master\SiteMerchant.Master" />
     <Content Include="Site\Magento.ashx" />
     <Content Include="Plugin\Magento\app\code\local\TapitOn\Events\Block\Success.php" />
     <Content Include="Plugin\Magento\app\design\frontend\default\default\template\checkout\order_info.phtml" />
@@ -4411,6 +4408,11 @@
     <Content Include="Site\ValidateLoggedInUser1.ashx" />
     <Content Include="Site\CheckEmailExistsForTwitter.ashx" />
     <Content Include="Service References\LiveCreditCard\wsdl.wsdl" />
+    <Content Include="Master\AdminMaster.Master" />
+    <Content Include="Master\SiteCustomer.Master" />
+    <Content Include="Master\SiteMaster.Master" />
+    <Content Include="Master\SiteMerchant.Master" />
+    <Content Include="Master\SiteSignUpMaster.Master" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Charts\Customer\" />

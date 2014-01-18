@@ -1208,6 +1208,15 @@ namespace DAL
         }
         //Bind Top 3 post by customer
 
+        //Bind Top 3 post by customer
+        public SqlDataReader BindLatestTop3Posttemp()
+        {
+            var sqlobj = DBAccess.InstanceCreation();
+            SqlDataReader DR = sqlobj.ExecuteSqlHelperDR("BindPostTemp");
+            return DR;
+        }
+        //Bind Temp
+
         //Bind Total Latest Post By Customer
         public SqlDataReader BindTotalLatestPostByCustomer(_CampaignsDetails obj)
         {
